@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+version = "0.0.0"
+name = "omero-isa"
+authors = [{ name = "Christoph Möhl" }]
+description = "Plugin for omero-cli-transfer to export OMERO data to ISA model metadata."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+
+]
+dependencies = ["omero-py", "pandas"]
+
+[project.optional-dependencies]
+dev = ["omero-cli-transfer", "ome-types"]
+
+
+[project.entry-points."omero_cli_transfer.pack.plugin"]
+arc = "omero_isa:pack_isa"
+
+[project.urls]
+Homepage = "https://github.com/cmohl2013/omero-isa"
