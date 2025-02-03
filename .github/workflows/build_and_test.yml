@@ -36,7 +36,7 @@ jobs:
         run: |
           $CONDA/bin/conda install -c anaconda python=3.8
           $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          $CONDA/bin/python -m pip install .
+          $CONDA/bin/python -m pip install . --ignore-installed
       - name: Install omero_isa dependencies
         run: |
           wget --quiet https://github.com/nfdi4plants/arcCommander/releases/download/v0.5.0-linux.x64/arc
