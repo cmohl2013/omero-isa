@@ -15,11 +15,13 @@ classifiers = [
     "Programming Language :: Python :: 3",
 
 ]
-dependencies = ["omero-py", "pandas"]
-
-[project.optional-dependencies]
-dev = ["omero-cli-transfer", "ome-types"]
-
+dependencies = [
+    "omero-py",
+    "pandas",
+    "isatools",
+    "omero-cli-transfer",
+    "ome-types",
+]
 
 [project.entry-points."omero_cli_transfer.pack.plugin"]
 isa = "omero_isa:pack_isa"
