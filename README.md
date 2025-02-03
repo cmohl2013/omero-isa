@@ -18,3 +18,22 @@ pip install -e .[dev] # installs optional dependencies including omero-cli-trans
 conda install pytest
 
 ```
+
+### Start OMERO test database
+
+Launch OMERO test environment with docker-compose.
+```
+sudo chmod a+x .omero/compose # enure that compose is executable
+sudo .omero/compose up
+```
+
+### Run tests
+```
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest
+```
+
+### Access to Test DB
+
+```
+http://localhost:4080/
+```

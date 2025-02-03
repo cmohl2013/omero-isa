@@ -22,7 +22,7 @@ dev = ["omero-cli-transfer", "ome-types"]
 
 
 [project.entry-points."omero_cli_transfer.pack.plugin"]
-arc = "omero_isa:pack_isa"
+isa = "omero_isa:pack_isa"
 
 [project.urls]
 Homepage = "https://github.com/cmohl2013/omero-isa"
