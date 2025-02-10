@@ -37,3 +37,8 @@ OMERODIR="." ICE_CONFIG="test/ice.config" pytest
 ```
 http://localhost:4080/
 ```
+Test User Credentials:
+
+```
+self.user.getOmeName()._val
+```

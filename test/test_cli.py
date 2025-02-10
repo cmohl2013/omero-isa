@@ -12,3 +12,6 @@ class TestArcTransfer(AbstractIsaTest):
             str(tmp_path)
         ]
         self.cli.invoke(args)
+
+        print(tmp_path)
+        assert (tmp_path / "i_investigation.txt").exists()
