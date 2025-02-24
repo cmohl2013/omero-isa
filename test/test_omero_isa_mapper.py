@@ -18,3 +18,9 @@ class TestOmeroIsaMapper(AbstractIsaTest):
 
         mapper.save_as_tab(tmp_path)
         assert (tmp_path / "i_investigation.txt").exists()
+
+
+    def test_omero_isa_mapper_tmp(self, project_with_arc_assay_annotation):
+        p = project_with_arc_assay_annotation
+        mapper = OmeroIsaMapper(p)
+        mapper._create_investigation()

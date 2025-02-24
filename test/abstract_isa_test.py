@@ -114,7 +114,7 @@ class AbstractIsaTest(AbstractCLITest):
     def dataset_with_arc_assay_annotation(self):
         dataset = self.make_dataset(name="My Assay with Annotations")
 
-        annotation_namespace = "ARC:ISA:ASSAY:ASSAY"
+        annotation_namespace = "ISA:ASSAY:ASSAY"
         annotations = {
             "Assay Identifier": "my-custom-assay-id",
             "Measurement Type": ("High resolution transmission electron micrograph"),
@@ -136,7 +136,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=dataset,
         )
 
-        annotation_namespace = "ARC:ISA:ASSAY:ASSAY PERFORMERS"
+        annotation_namespace = "ISA:ASSAY:ASSAY PERFORMERS"
         annotations = {
             "Last Name": "Doe",
             "First Name": "John",
@@ -157,7 +157,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=dataset,
         )
 
-        annotation_namespace = "ARC:ISA:ASSAY:ASSAY PERFORMERS"
+        annotation_namespace = "ISA:ASSAY:ASSAY PERFORMERS"
         annotations = {
             "Last Name": "Laura",
             "First Name": "Langer",
@@ -226,7 +226,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE"
+        annotation_namespace = "ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE"
         annotations = {
             "Term Source Name": "EFO",
             "Term Source File": ("http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl"),
@@ -239,7 +239,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:INVESTIGATION:INVESTIGATION"
+        annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION"
         annotations = {
             "Investigation Identifier": "my-custom-investigation-id",
             "Investigation Title": "Mitochondria in HeLa Cells",
@@ -256,7 +256,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:INVESTIGATION:INVESTIGATION CONTACTS"
+        annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION CONTACTS"
         annotations = {
             "Investigation Person Last Name": "Mueller",
             "Investigation Person First Name": "Arno",
@@ -274,7 +274,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
+        annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
         annotations = {
             "Investigation Publication DOI": "10.1038/s41467-022-34205-9",
             "Investigation Publication PubMed ID": 678978,
@@ -295,7 +295,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY"
+        annotation_namespace = "ISA:STUDY:STUDY"
         annotations = {
             "Study Identifier": "my-custom-study-id",
             "Study Title": "My Custom Study Title",
@@ -310,7 +310,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY PUBLICATIONS"
+        annotation_namespace = "ISA:STUDY:STUDY PUBLICATIONS"
         annotations = {
             "Study Publication DOI": "10.1038/s41467-022-34205-9",
             "Study Publication PubMed ID": 678978,
@@ -330,7 +330,7 @@ class AbstractIsaTest(AbstractCLITest):
             namespace=annotation_namespace,
             parent_object=project,
         )
-        annotation_namespace = "ARC:ISA:STUDY:STUDY PUBLICATIONS"
+        annotation_namespace = "ISA:STUDY:STUDY PUBLICATIONS"
         annotations = {
             "Study Publication DOI": "10.567/s56878-890890-330-3",
             "Study Publication PubMed ID": 7898961,
@@ -349,7 +349,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY DESIGN DESCRIPTORS"
+        annotation_namespace = "ISA:STUDY:STUDY DESIGN DESCRIPTORS"
         annotations = {
             "Study Design Type": "Transmission Electron Microscopy",
             "Study Design Type Term Accession Number": (
@@ -364,7 +364,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY FACTORS"
+        annotation_namespace = "ISA:STUDY:STUDY FACTORS"
         annotations = {
             "Study Factor Name": "My Factor",
             "Study Factor Type": "Factor for test reasons",
@@ -380,7 +380,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY FACTORS"
+        annotation_namespace = "ISA:STUDY:STUDY FACTORS"
         annotations = {
             "Study Factor Name": "My Second Factor",
             "Study Factor Type": "Factor Number 2 for test reasons",
@@ -396,7 +396,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY PROTOCOLS"
+        annotation_namespace = "ISA:STUDY:STUDY PROTOCOLS"
         annotations = {
             "Study Protocol Name": "Cell embedding for electron microscopy",
             "Study Protocol Type": "Test Protocol Type",
@@ -432,7 +432,7 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ARC:ISA:STUDY:STUDY CONTACTS"
+        annotation_namespace = "ISA:STUDY:STUDY CONTACTS"
         annotations = {
             "Study Person Last Name": "Mueller",
             "Study Person First Name": "Arno",
