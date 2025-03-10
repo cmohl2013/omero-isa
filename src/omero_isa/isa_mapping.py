@@ -1,4 +1,4 @@
-from isatools.model import Study, Investigation
+from isatools.model import Study, Investigation, Publication, OntologyAnnotation
 from isatools import isatab
 
 from pathlib import Path
@@ -28,7 +28,7 @@ class OmeroIsaMapper():
 
         self.isa_attribute_config = {
             "investigation": {
-                "namespace": "ARC:ISA:INVESTIGATION:INVESTIGATION",
+                "namespace": "ISA:INVESTIGATION:INVESTIGATION",
                 "default_values": {
                     "filename": "i_investigation.txt",
                     "identifier": "default-investigation-id",
@@ -37,8 +37,17 @@ class OmeroIsaMapper():
                     "submission_date": None,
                     "public_release_date": None,
                 },
-            }
-        }
+            },
+            "investigation_publications": {
+                "namespace": ("ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"),
+                "default_values": {
+                    "doi": None,
+                    "pubmed_id": None,
+                    "author_list": None,
+                    "title": None,
+                    "status": None,
+                },
+        }}
 
 
 
@@ -51,7 +60,17 @@ class OmeroIsaMapper():
 
         investigation_params = self.isa_attributes["investigation"]["values"][0]
         self.investigation = Investigation(**investigation_params)
+
+        for publication_params in self.isa_attributes["investigation_publications"]["values"]:
+
+            status = publication_params.get("status", None)
+            if status is not None:
+                publication_params["status"] = OntologyAnnotation(term=status)
+
+            pub = Publication(**publication_params)
+            self.investigation.publications.append(pub)
         pass
+
 
     def _create_isa_attributes(self):
 
@@ -82,7 +101,7 @@ class OmeroIsaMapper():
                 for annotation in annotation_data:
                     for key in config["default_values"]:
 
-                        value = annotation.get(_expand_isa_attribute_key(key), config["default_values"][key])
+                        value = annotation.get(key, config["default_values"][key])
                         if value is not None:
                             values_to_set[key] = value
                     if len(values_to_set) > 0:

@@ -241,13 +241,13 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION"
         annotations = {
-            "Investigation Identifier": "my-custom-investigation-id",
-            "Investigation Title": "Mitochondria in HeLa Cells",
-            "Investigation Description": (
+            "identifier": "my-custom-investigation-id",
+            "title": "Mitochondria in HeLa Cells",
+            "description": (
                 "Observation of MDV formation in Mitochondria"
             ),
-            "Investigation Submission Date": "8/11/2022",
-            "Investigation Public Release Date": "1/12/2022",
+            "submission_date": "8/11/2022",
+            "public_release_date": "1/12/2022",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -276,17 +276,13 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
         annotations = {
-            "Investigation Publication DOI": "10.1038/s41467-022-34205-9",
-            "Investigation Publication PubMed ID": 678978,
-            "Investigation Publication Author List": "Mueller M, Langer L L",
-            "Investigation Publication Title": (
+            "doi": "10.1038/s41467-022-34205-9",
+            "pubmed_id": 678978,
+            "author_list": "Mueller M, Langer L L",
+            "title": (
                 "HJKIH P9 orchestrates JKLKinase " "trafficking in mesenchymal cells."
             ),
-            "Investigation Publication Status": "published",
-            "Investigation Publication Status Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Investigation Publication Status Term Source REF": "EFO",
+            "status": "published",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -294,6 +290,24 @@ class AbstractIsaTest(AbstractCLITest):
             namespace=annotation_namespace,
             parent_object=project,
         )
+
+        annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
+        annotations = {
+            "doi": "10.1038/s41467-022-34789-9",
+            "pubmed_id": 678978,
+            "author_list": "Meier M, Kluge L L",
+            "title": (
+                "Rho GTPase is downreglated upon JK0897 treatment"
+            ),
+            "status": "published",
+        }
+        self.create_mapped_annotation(
+            name=annotation_namespace,
+            map_values=annotations,
+            namespace=annotation_namespace,
+            parent_object=project,
+        )
+
 
         annotation_namespace = "ISA:STUDY:STUDY"
         annotations = {
