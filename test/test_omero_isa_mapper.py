@@ -25,4 +25,7 @@ class TestOmeroIsaMapper(AbstractIsaTest):
         mapper = OmeroIsaMapper(p)
         mapper._create_investigation()
         mapper.save_as_tab(tmp_path)
-        pass
+
+        with open(tmp_path / "i_investigation.txt", "r") as f:
+            tabdata = f.read()
+        print(tabdata)

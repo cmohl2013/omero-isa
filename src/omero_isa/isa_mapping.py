@@ -11,19 +11,6 @@ class OmeroIsaMapper():
     def __init__(self, ome_project):
 
         self.obj = ome_project
-        owner = ome_project.getOwner
-
-
-        study = Study(filename="s_study.txt")
-
-        ome_project_name = ome_project.getName()
-        study.identifier = ome_project_name.lower().replace(" ", "-")
-        study.title = ome_project_name
-        study.description = ome_project.getDescription()
-
-        self.investigation = Investigation(filename="i_investigation.txt")
-
-        self.investigation.studies.append(study)
 
 
         self.isa_attribute_config = {
@@ -47,7 +34,19 @@ class OmeroIsaMapper():
                     "title": None,
                     "status": None,
                 },
-        }}
+            },
+            "study": {
+                "namespace": "ISA:STUDY:STUDY",
+                "default_values": {
+                    "filename": "s_study.txt",
+                    "identifier": ome_project.getName().lower().replace(" ", "-"),
+                    "title": ome_project.getName(),
+                    "description": ome_project.getDescription(),
+                    "submission_date": None,
+                    "public_release_date": None,
+                }
+            }
+        }
 
 
 
@@ -69,7 +68,13 @@ class OmeroIsaMapper():
 
             pub = Publication(**publication_params)
             self.investigation.publications.append(pub)
+
+        study_params = self.isa_attributes["study"]["values"][0]
+        study = Study(**study_params)
+
+        self.investigation.studies.append(study)
         pass
+
 
 
     def _create_isa_attributes(self):
