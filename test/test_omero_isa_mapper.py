@@ -1,6 +1,6 @@
 from abstract_isa_test import AbstractIsaTest
 
-from omero_isa.isa_mapping import OmeroProjectMapper
+from omero_isa.isa_mapping import OmeroProjectMapper, OmeroDatasetMapper
 
 
 class TestOmeroProjectMapper(AbstractIsaTest):
@@ -29,3 +29,14 @@ class TestOmeroProjectMapper(AbstractIsaTest):
         with open(tmp_path / "i_investigation.txt", "r") as f:
             tabdata = f.read()
         print(tabdata)
+
+
+class TestOmeroDatasetMapper(AbstractIsaTest):
+
+    def test_omero_dataset_mapper_attributes(self, dataset_1):
+
+        mapper = OmeroDatasetMapper(dataset_1, image_filename_getter=None)
+
+        mapper._create_assay()
+
+        mapper.assay.identifier == "my-first-assay"

@@ -38,9 +38,43 @@ class IsaPacker(object):
 
     def pack(self):
 
-        mapper = OmeroProjectMapper(self.obj)
-        mapper._create_investigation()
-        mapper.save_as_tab(self.destination_path)
+        project_mapper = OmeroProjectMapper(self.obj)
+        project_mapper._create_investigation()
+
+        ome_project = self.obj
+        project_id = ome_project.getId()
+
+        ome_datasets = self.conn.getObjects(
+            "Dataset", opts={"project": project_id}
+        )
+
+        def _filename_for_image(image_id):
+            return self.image_filenames_mapping[f"Image:{image_id}"].name
+
+        investigation = project_mapper.investigation
+
+        assert len(investigation.studies) == 1
+        study = investigation.studies[0]
+
+        for dataset in ome_datasets:
+            dataset_mapper = OmeroDatasetMapper(
+                dataset,
+                image_filename_getter=_filename_for_image,
+            )
+            self.isa_assay_mappers.append(dataset_mapper)
+            study.assays.append(dataset_mapper.assay)
+
+
+
+
+
+
+
+
+
+        project_mapper.save_as_tab(self.destination_path)
+
+
         # TODO
         # i_*.txt for identifying the Investigation file, e.g. i_investigation.txt
         # s_*.txt for identifying Study file(s), e.g. s_gene_survey.txt
