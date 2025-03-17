@@ -1,5 +1,5 @@
 from pathlib import Path
-from omero_isa.isa_mapping import OmeroIsaMapper
+from omero_isa.isa_mapping import OmeroProjectMapper
 
 def pack_isa(ome_object,
              destination_path,
@@ -38,7 +38,8 @@ class IsaPacker(object):
 
     def pack(self):
 
-        mapper = OmeroIsaMapper(self.obj)
+        mapper = OmeroProjectMapper(self.obj)
+        mapper._create_investigation()
         mapper.save_as_tab(self.destination_path)
         # TODO
         # i_*.txt for identifying the Investigation file, e.g. i_investigation.txt

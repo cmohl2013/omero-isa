@@ -1,16 +1,16 @@
 from abstract_isa_test import AbstractIsaTest
 
-from omero_isa.isa_mapping import OmeroIsaMapper
+from omero_isa.isa_mapping import OmeroProjectMapper
 
 
-class TestOmeroIsaMapper(AbstractIsaTest):
+class TestOmeroProjectMapper(AbstractIsaTest):
 
-    def test_omero_isa_mapper_attributes(self, project_1, tmp_path):
+    def test_omero_project_mapper_attributes(self, project_1, tmp_path):
 
         p = project_1
 
-        mapper = OmeroIsaMapper(project_1)
-
+        mapper = OmeroProjectMapper(project_1)
+        mapper._create_investigation()
 
         assert mapper.investigation.studies[0].title == "My First Study"
         assert mapper.investigation.studies[0].identifier == "my-first-study"
@@ -20,9 +20,9 @@ class TestOmeroIsaMapper(AbstractIsaTest):
         assert (tmp_path / "i_investigation.txt").exists()
 
 
-    def test_omero_isa_mapper_tmp(self, project_with_arc_assay_annotation, tmp_path):
+    def test_omero_project_mapper_with_annotation(self, project_with_arc_assay_annotation, tmp_path):
         p = project_with_arc_assay_annotation
-        mapper = OmeroIsaMapper(p)
+        mapper = OmeroProjectMapper(p)
         mapper._create_investigation()
         mapper.save_as_tab(tmp_path)
 

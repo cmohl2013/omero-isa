@@ -6,7 +6,7 @@ from pathlib import Path
 from functools import lru_cache
 
 
-class OmeroIsaMapper():
+class OmeroProjectMapper():
 
     def __init__(self, ome_project):
 
@@ -51,6 +51,7 @@ class OmeroIsaMapper():
 
 
     def save_as_tab(self, root_path: Path):
+
         isatab.dump(self.investigation, root_path)
 
 
@@ -60,20 +61,22 @@ class OmeroIsaMapper():
         investigation_params = self.isa_attributes["investigation"]["values"][0]
         self.investigation = Investigation(**investigation_params)
 
-        for publication_params in self.isa_attributes["investigation_publications"]["values"]:
+        publication_params = self.isa_attributes.get("investigation_publication", None)
+        if publication_params is not None:
+            for publication_params in publication_params["values"]:
 
-            status = publication_params.get("status", None)
-            if status is not None:
-                publication_params["status"] = OntologyAnnotation(term=status)
+                status = publication_params.get("status", None)
+                if status is not None:
+                    publication_params["status"] = OntologyAnnotation(term=status)
 
-            pub = Publication(**publication_params)
-            self.investigation.publications.append(pub)
+                pub = Publication(**publication_params)
+                self.investigation.publications.append(pub)
 
         study_params = self.isa_attributes["study"]["values"][0]
         study = Study(**study_params)
 
         self.investigation.studies.append(study)
-        pass
+
 
 
 
