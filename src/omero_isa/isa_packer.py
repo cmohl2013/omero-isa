@@ -1,19 +1,12 @@
 from pathlib import Path
-from omero_isa.isa_mapping import OmeroProjectMapper
+from omero_isa.isa_mapping import OmeroProjectMapper, OmeroDatasetMapper
 
-def pack_isa(ome_object,
-             destination_path,
-             tmp_path,
-             image_filenames_mapping,
-             conn):
 
-    packer = IsaPacker(ome_object,
-                       destination_path,
-                       tmp_path,
-                       image_filenames_mapping,
-                       conn)
+def pack_isa(ome_object, destination_path, tmp_path, image_filenames_mapping, conn):
+    packer = IsaPacker(
+        ome_object, destination_path, tmp_path, image_filenames_mapping, conn
+    )
     packer.pack()
-
 
 
 class IsaPacker(object):
@@ -25,7 +18,6 @@ class IsaPacker(object):
         image_filenames_mapping,
         conn,
     ):
-
         assert ome_object.OMERO_CLASS == "Project"
         self.obj = ome_object  # must be a project
         self.destination_path = destination_path
@@ -37,16 +29,13 @@ class IsaPacker(object):
         self.ome_dataset_for_isa_assay = {}
 
     def pack(self):
-
         project_mapper = OmeroProjectMapper(self.obj)
         project_mapper._create_investigation()
 
         ome_project = self.obj
         project_id = ome_project.getId()
 
-        ome_datasets = self.conn.getObjects(
-            "Dataset", opts={"project": project_id}
-        )
+        ome_datasets = self.conn.getObjects("Dataset", opts={"project": project_id})
 
         def _filename_for_image(image_id):
             return self.image_filenames_mapping[f"Image:{image_id}"].name
@@ -65,15 +54,7 @@ class IsaPacker(object):
             study.assays.append(dataset_mapper.assay)
 
 
-
-
-
-
-
-
-
         project_mapper.save_as_tab(self.destination_path)
-
 
         # TODO
         # i_*.txt for identifying the Investigation file, e.g. i_investigation.txt

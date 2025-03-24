@@ -465,3 +465,88 @@ class AbstractIsaTest(AbstractCLITest):
         )
 
         return self.gw.getObject("Project", project.id._val)
+
+
+    @pytest.fixture(scope="function")
+    def dataset_czi_1(self):
+        dataset = self.make_dataset(name="My Assay with CZI Images")
+
+        def _add_local_image_file(path_to_img_file):
+            assert path_to_img_file.exists()
+            target_str = f"Dataset:{dataset.id._val}"
+            self.import_image(path_to_img_file, extra_args=["--target", target_str])
+
+        path_to_img_file = (
+            Path(__file__).parent / "data/img_files/CD_s_1_t_3_c_2_z_5.czi"
+        )
+        _add_local_image_file(path_to_img_file=path_to_img_file)
+
+        image_tif = self.create_test_image(
+            100,
+            100,
+            1,
+            1,
+            1,
+            self.client.getSession(),
+            name="another pixel image",
+        )
+        self.link(dataset, image_tif)
+
+        path_to_img_file = Path(__file__).parent / "data/img_files/sted-confocal.lif"
+        _add_local_image_file(path_to_img_file=path_to_img_file)
+
+        return dataset
+
+    @pytest.fixture(scope="function")
+    def project_czi(self, dataset_czi_1, dataset_1):
+        project_czi = self.make_project(name="My Study with a CZI Image")
+
+        self.link(project_czi, dataset_czi_1)
+        self.link(project_czi, dataset_1)
+
+        return self.gw.getObject("Project", project_czi.id._val)
+
+    @pytest.fixture(scope="function")
+    def path_arc_test_data(self, project_1, project_czi, request):
+        path_to_arc_test_data = (
+            Path(__file__).parent / "data/tmp_test_data/packed_projects"
+        )
+        os.makedirs(path_to_arc_test_data, exist_ok=True)
+
+        shutil.rmtree(path_to_arc_test_data)
+        os.makedirs(path_to_arc_test_data, exist_ok=True)
+
+        for project, project_name in [
+            (project_1, "project_1"),
+            (project_czi, "project_czi"),
+        ]:
+            project_identifier = f"Project:{project.getId()}"
+            path_to_arc_test_dataset = path_to_arc_test_data / project_name
+            args = self.args + [
+                "pack",
+                project_identifier,
+                str(path_to_arc_test_dataset),
+            ]
+            self.cli.invoke(args)
+
+            with tarfile.open(path_to_arc_test_dataset.with_suffix(".tar")) as f:
+                f.extractall(path_to_arc_test_dataset)
+            os.remove(path_to_arc_test_dataset.with_suffix(".tar"))
+
+        return path_to_arc_test_data
+
+    @pytest.fixture(scope="function")
+    def path_omero_data_1(self, path_arc_test_data):
+        return path_arc_test_data / "project_1"
+
+    @pytest.fixture(scope="function")
+    def path_omero_data_czi(self, path_arc_test_data):
+        return path_arc_test_data / "project_czi"
+
+
+    @pytest.fixture(scope="function")
+    def omero_data_czi_image_filenames_mapping(self, path_omero_data_czi):
+        with open(path_omero_data_czi / "transfer.xml") as f:
+            xmldata = f.read()
+        ome = from_xml(xmldata)
+        return list_file_ids(ome)

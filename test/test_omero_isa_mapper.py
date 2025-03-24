@@ -1,7 +1,7 @@
 from abstract_isa_test import AbstractIsaTest
 
 from omero_isa.isa_mapping import OmeroProjectMapper, OmeroDatasetMapper
-
+from omero.gateway import BlitzGateway
 
 class TestOmeroProjectMapper(AbstractIsaTest):
 
@@ -33,9 +33,24 @@ class TestOmeroProjectMapper(AbstractIsaTest):
 
 class TestOmeroDatasetMapper(AbstractIsaTest):
 
-    def test_omero_dataset_mapper_attributes(self, dataset_1):
+    def test_omero_dataset_mapper_attributes(self,
+                                             dataset_czi_1,
+                                             project_czi,
+                                             path_omero_data_czi,
+                                             tmp_path,
+                                             omero_data_czi_image_filenames_mapping):
 
-        mapper = OmeroDatasetMapper(dataset_1, image_filename_getter=None)
+
+        conn = BlitzGateway(client_obj=self.client)
+        dataset_czi_1_obj = self.gw.getObject("Dataset", dataset_czi_1.id._val)
+
+        mapper = OmeroDatasetMapper(dataset_czi_1_obj,
+                                    conn=conn,
+                                    path_omero_data=path_omero_data_czi,
+                                    image_filenames_mapping=omero_data_czi_image_filenames_mapping,
+                                    destination_path=tmp_path,
+                                    image_filename_getter=None,
+                                    )
 
         mapper._create_assay()
 

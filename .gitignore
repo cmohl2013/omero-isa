@@ -1,5 +1,8 @@
 i_investigation.txt
 
+# Temporary test data
+test/data/tmp_test_data
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
