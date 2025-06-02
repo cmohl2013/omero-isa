@@ -48,6 +48,10 @@ class IsaPacker(object):
         for dataset in ome_datasets:
             dataset_mapper = OmeroDatasetMapper(
                 dataset,
+                self.conn,
+                self.path_to_image_files,
+                self.image_filenames_mapping,
+                self.destination_path,
                 image_filename_getter=_filename_for_image,
             )
             self.isa_assay_mappers.append(dataset_mapper)

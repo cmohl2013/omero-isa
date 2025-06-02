@@ -30,6 +30,21 @@ class TestOmeroProjectMapper(AbstractIsaTest):
             tabdata = f.read()
         print(tabdata)
 
+    def test_omero_project_mapper_with_czi_files(self, project_czi, tmp_path):
+
+        p = project_czi
+        mapper = OmeroProjectMapper(p)
+        mapper._create_investigation()
+        mapper.save_as_tab(tmp_path)
+
+        with open(tmp_path / "i_investigation.txt", "r") as f:
+            tabdata = f.read()
+        print(tabdata)
+        print(tmp_path)
+        pass
+
+
+
 
 class TestOmeroDatasetMapper(AbstractIsaTest):
 
@@ -54,4 +69,4 @@ class TestOmeroDatasetMapper(AbstractIsaTest):
 
         mapper._create_assay()
 
-        mapper.assay.identifier == "my-first-assay"
+        pass

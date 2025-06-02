@@ -81,12 +81,15 @@ class OmeroDatasetMapper(AbstractIsaMapper):
             "assay": {
                 "namespace": "ISA:ASSAY:ASSAY",
                 "default_values": {
+                    "filename": "a_assay.txt",
                     "measurement_type": None,
-                    "technology_type": "not set",
-                    "Technolology Platform": None,
+                    "technology_type": None,
+                    "Technolology_platform": None,
                 },
             },
         }
+
+        self._create_assay()
 
 
 

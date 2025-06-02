@@ -507,7 +507,7 @@ class AbstractIsaTest(AbstractCLITest):
         return self.gw.getObject("Project", project_czi.id._val)
 
     @pytest.fixture(scope="function")
-    def path_arc_test_data(self, project_1, project_czi, request):
+    def path_arc_test_data(self, project_1, project_czi, project_with_arc_assay_annotation, request):
         path_to_arc_test_data = (
             Path(__file__).parent / "data/tmp_test_data/packed_projects"
         )
@@ -519,6 +519,7 @@ class AbstractIsaTest(AbstractCLITest):
         for project, project_name in [
             (project_1, "project_1"),
             (project_czi, "project_czi"),
+            (project_with_arc_assay_annotation, "project_with_arc_assay_annotation"),
         ]:
             project_identifier = f"Project:{project.getId()}"
             path_to_arc_test_dataset = path_to_arc_test_data / project_name
@@ -543,10 +544,29 @@ class AbstractIsaTest(AbstractCLITest):
     def path_omero_data_czi(self, path_arc_test_data):
         return path_arc_test_data / "project_czi"
 
+    @pytest.fixture(scope="function")
+    def path_omero_data_with_arc_assay_annotation(self, path_arc_test_data):
+        return path_arc_test_data / "project_with_arc_assay_annotation"
+
 
     @pytest.fixture(scope="function")
     def omero_data_czi_image_filenames_mapping(self, path_omero_data_czi):
         with open(path_omero_data_czi / "transfer.xml") as f:
+            xmldata = f.read()
+        ome = from_xml(xmldata)
+        return list_file_ids(ome)
+
+    @pytest.fixture(scope="function")
+    def omero_data_with_arc_assay_annotation_image_filenames_mapping(self, path_omero_data_with_arc_assay_annotation):
+        with open(path_omero_data_with_arc_assay_annotation / "transfer.xml") as f:
+            xmldata = f.read()
+        ome = from_xml(xmldata)
+        return list_file_ids(ome)
+
+
+    @pytest.fixture(scope="function")
+    def omero_data_1_filenames_mapping(self, path_omero_data_1):
+        with open(path_omero_data_1 / "transfer.xml") as f:
             xmldata = f.read()
         ome = from_xml(xmldata)
         return list_file_ids(ome)
