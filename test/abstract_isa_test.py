@@ -258,14 +258,14 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:INVESTIGATION:INVESTIGATION CONTACTS"
         annotations = {
-            "Investigation Person Last Name": "Mueller",
-            "Investigation Person First Name": "Arno",
-            "Investigation Person Email": "arno.mueller@email.com",
-            "Investigation Person Roles": "researcher",
-            "Investigation Person Roles Term Accession Number": (
+            "last_name": "Mueller",
+            "first_name": "Arno",
+            "email": "arno.mueller@email.com",
+            "roles_term": "researcher",
+            "roles_term_accession": (
                 "http://purl.org/spar/scoro/researcher"
             ),
-            "Investigation Person Roles Term Source REF": "SCoRO",
+            "roles_term_source": "SCoRO",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -282,7 +282,7 @@ class AbstractIsaTest(AbstractCLITest):
             "title": (
                 "HJKIH P9 orchestrates JKLKinase " "trafficking in mesenchymal cells."
             ),
-            "status": "published",
+            "status_term": "published",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -299,7 +299,7 @@ class AbstractIsaTest(AbstractCLITest):
             "title": (
                 "Rho GTPase is downreglated upon JK0897 treatment"
             ),
-            "status": "published",
+            "status_term": "published",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,

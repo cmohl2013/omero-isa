@@ -1,5 +1,7 @@
-from isatools.model import Study, Investigation, Publication, OntologyAnnotation, Assay
+from isatools.model import Study, Investigation, Publication, OntologyAnnotation, Assay, DataFile, Person
 from isatools import isatab
+import json
+from isatools.isajson import ISAJSONEncoder
 
 from pathlib import Path
 
@@ -15,10 +17,34 @@ class AbstractIsaMapper:
             annotation_data = self._annotation_data(annotation_type)
             config = self.isa_attribute_config[annotation_type]
 
+            ontology_config = config.get("ontology_annotations", None)
+
+            ontology_annotation_attributes = []
+
+
+
+            for i in range(len(annotation_data)):
+                ontology_annotation_attribute = {}
+                if ontology_config is not None:
+
+                    for ont in ontology_config:
+                        ontology_annotation = {}
+                        ontology_annotation = {k.replace(f"{ont}_", ''): v for k, v in annotation_data[i].items() if ont in k}
+                        annotation_data[i] = {k: v for k, v in annotation_data[i].items() if ont not in k}
+
+                        ontology_annotation_attribute[ont] = OntologyAnnotation(**ontology_annotation)
+                ontology_annotation_attributes.append(ontology_annotation_attribute)
+
+
+
             isa_attributes[annotation_type] = {}
             isa_attributes[annotation_type]["values"] = []
+            isa_attributes[annotation_type]["ontology_values"] = ontology_annotation_attributes
+
+            #isa_attributes[annotation_type]["ontology_values"] = ontology_annotation_attributes
 
             values_to_set = {}
+
             if len(annotation_data) == 0:
                 # set defaults if no annotations available
                 for key in config["default_values"]:
@@ -27,6 +53,8 @@ class AbstractIsaMapper:
                         values_to_set[key] = value
                 if len(values_to_set) > 0:
                     isa_attributes[annotation_type]["values"].append(values_to_set)
+
+
             else:
                 # set annotation value if key is
                 # registered in config["default_values"]
@@ -45,6 +73,9 @@ class AbstractIsaMapper:
                         )
             if len(isa_attributes[annotation_type]["values"]) == 0:
                 del isa_attributes[annotation_type]
+            else:
+                assert len(isa_attributes[annotation_type]["values"]) == len(isa_attributes[annotation_type]["ontology_values"])
+
 
             self.isa_attributes = isa_attributes
 
@@ -77,11 +108,13 @@ class OmeroDatasetMapper(AbstractIsaMapper):
         self.image_filenames_mapping = image_filenames_mapping
         owner = ome_dataset.getOwner()
 
+        self.assay_identifier = self.obj.getName().lower().replace(" ", "-")
+
         self.isa_attribute_config = {
             "assay": {
                 "namespace": "ISA:ASSAY:ASSAY",
                 "default_values": {
-                    "filename": "a_assay.txt",
+                    "filename": f"a_{self.assay_identifier}.txt",
                     "measurement_type": None,
                     "technology_type": None,
                     "Technolology_platform": None,
@@ -100,9 +133,10 @@ class OmeroDatasetMapper(AbstractIsaMapper):
         assay_params = self.isa_attributes["assay"]["values"][0]
         self.assay = Assay(**assay_params)
 
-        assay_identifier = self.obj.getName().lower().replace(" ", "-")
+
+        dest_image_folder_rel = Path(f"assays/{self.assay_identifier}/dataset")
         dest_image_folder = (
-            self.destination_path / f"assays/{assay_identifier}/dataset"
+            self.destination_path / dest_image_folder_rel
         )
 
         for image in self.conn.getObjects(
@@ -113,14 +147,14 @@ class OmeroDatasetMapper(AbstractIsaMapper):
                 image.getId(), abspath=False
             )
             target_path = dest_image_folder / img_filepath_rel.name
+            target_path_rel = dest_image_folder_rel / img_filepath_rel.name
 
             os.makedirs(target_path.parent, exist_ok=True)
             shutil.copy2(img_filepath_abs, target_path)
 
-            #TODO create datafile from raw image
-            # datafile = DataFile(filename="sequenced-data-{}".format(i), label="Raw Data File")
-            # add datafile to assay
-            #self.assay.data_files.append(datafile)
+            img_datafile = DataFile(filename=str(target_path_rel), label="Raw Image Data File")
+            self.assay.data_files.append(img_datafile)
+
 
     def image_filename(self, image_id, abspath=True):
         image_id_str = f"Image:{image_id}"
@@ -136,6 +170,7 @@ class OmeroDatasetMapper(AbstractIsaMapper):
 class OmeroProjectMapper(AbstractIsaMapper):
     def __init__(self, ome_project):
         self.obj = ome_project
+        owner = ome_project.getOwner()  # used to set default values below
 
         self.isa_attribute_config = {
             "investigation": {
@@ -149,6 +184,19 @@ class OmeroProjectMapper(AbstractIsaMapper):
                     "public_release_date": None,
                 },
             },
+            "investigation_contacts": {
+                "namespace": "ISA:INVESTIGATION:INVESTIGATION CONTACTS",
+                "default_values": {
+                    "last_name": owner.getLastName(),
+                    "first_name": owner.getFirstName(),
+                    "email": owner.getEmail(),
+                    "phone": None,
+                    "fax": None,
+                    "address": None,
+                    "affiliation": None,
+                },
+                "ontology_annotations":["roles"]
+            },
             "investigation_publications": {
                 "namespace": ("ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"),
                 "default_values": {
@@ -156,8 +204,8 @@ class OmeroProjectMapper(AbstractIsaMapper):
                     "pubmed_id": None,
                     "author_list": None,
                     "title": None,
-                    "status": None,
                 },
+                "ontology_annotations":["status"]
             },
             "study": {
                 "namespace": "ISA:STUDY:STUDY",
@@ -175,20 +223,39 @@ class OmeroProjectMapper(AbstractIsaMapper):
     def save_as_tab(self, root_path: Path):
         isatab.dump(self.investigation, root_path)
 
+    def save_as_json(self, root_path: Path):
+
+        # Note that the extra parameters sort_keys, indent and separators are to make the output more human-readable.
+        out = json.dumps(self.investigation, cls=ISAJSONEncoder, sort_keys=True, indent=4, separators=(',', ': '))
+
+        with open(root_path / "i_investigation.json", "w") as f:
+            f.write(out)
+
+
     def _create_investigation(self):
         self._create_isa_attributes()
 
         investigation_params = self.isa_attributes["investigation"]["values"][0]
+
+        contacts = []
+        contact_params = self.isa_attributes.get("investigation_contacts", None)
+        if contact_params is not None:
+            for contact_params, con_ontology_params in zip(contact_params["values"], contact_params["ontology_values"]):
+                con = Person(**contact_params)
+                role = con_ontology_params.get("roles", None)
+                if role is not None:
+                    con.roles = [role]
+                contacts.append(con)
+        investigation_params["contacts"] = contacts
+
         self.investigation = Investigation(**investigation_params)
 
-        publication_params = self.isa_attributes.get("investigation_publication", None)
-        if publication_params is not None:
-            for publication_params in publication_params["values"]:
-                status = publication_params.get("status", None)
-                if status is not None:
-                    publication_params["status"] = OntologyAnnotation(term=status)
 
+        publication_params = self.isa_attributes.get("investigation_publications", None)
+        if publication_params is not None:
+            for publication_params, pub_ontology_params in zip(publication_params["values"], publication_params["ontology_values"]):
                 pub = Publication(**publication_params)
+                pub.status = pub_ontology_params.get("status", None)
                 self.investigation.publications.append(pub)
 
         study_params = self.isa_attributes["study"]["values"][0]

@@ -1,5 +1,6 @@
 from abstract_isa_test import AbstractIsaTest
 from omero_isa.isa_packer import IsaPacker
+import json
 
 class TestIsaPacker(AbstractIsaTest):
 
@@ -19,6 +20,16 @@ class TestIsaPacker(AbstractIsaTest):
         )
 
         ap.pack()
+        assert (path_to_arc_repo / "i_investigation.json").exists()
+
+        with open(path_to_arc_repo / "i_investigation.json") as f:
+            d = json.load(f)
+
+        assert d["identifier"] == "my-custom-investigation-id"
+        assert len(d["studies"][0]["assays"]) == 2
+        assert d["publications"] == 2
+
+
 
 
     def test_isa_packer_project_1(self,
@@ -37,3 +48,8 @@ class TestIsaPacker(AbstractIsaTest):
         )
 
         ap.pack()
+
+        assert (path_to_arc_repo / "i_investigation.txt").exists()
+
+        assert (path_to_arc_repo / "a_my-first-assay.txt").exists()
+        assert (path_to_arc_repo / "a_my-second-assay.txt").exists()

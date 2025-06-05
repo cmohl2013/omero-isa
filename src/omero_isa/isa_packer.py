@@ -59,6 +59,8 @@ class IsaPacker(object):
 
 
         project_mapper.save_as_tab(self.destination_path)
+        project_mapper.save_as_json(self.destination_path)
+
 
         # TODO
         # i_*.txt for identifying the Investigation file, e.g. i_investigation.txt

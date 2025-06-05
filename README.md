@@ -27,6 +27,11 @@ sudo chmod a+x .omero/compose # enure that compose is executable
 sudo .omero/compose up
 ```
 
+Complete rebuild (e.g. to update omero version):
+```
+sudo .omero/compose up --build
+```
+
 ### Run tests
 ```
 OMERODIR="." ICE_CONFIG="test/ice.config" pytest
