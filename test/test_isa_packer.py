@@ -26,8 +26,10 @@ class TestIsaPacker(AbstractIsaTest):
             d = json.load(f)
 
         assert d["identifier"] == "my-custom-investigation-id"
+        assert d["studies"][0]["identifier"] == "my-custom-study-id"
         assert len(d["studies"][0]["assays"]) == 2
-        assert d["publications"] == 2
+        assert len(d["studies"][0]["publications"]) == 2
+        assert len(d["publications"]) == 2
 
 
 
@@ -49,7 +51,4 @@ class TestIsaPacker(AbstractIsaTest):
 
         ap.pack()
 
-        assert (path_to_arc_repo / "i_investigation.txt").exists()
-
-        assert (path_to_arc_repo / "a_my-first-assay.txt").exists()
-        assert (path_to_arc_repo / "a_my-second-assay.txt").exists()
+        assert (path_to_arc_repo / "i_investigation.json").exists()

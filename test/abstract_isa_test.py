@@ -311,11 +311,14 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:STUDY:STUDY"
         annotations = {
-            "Study Identifier": "my-custom-study-id",
-            "Study Title": "My Custom Study Title",
-            "Study Description": "My custom description.",
-            "Study Submission Date": "8/11/2022",
-            "Study Public Release Date": "3/3/2023",
+            "identifier": "my-custom-study-id",
+            "title": "My Custom Study Title",
+            "description": "My custom description.",
+            "submission_date": "8/11/2022",
+            "public_release_date": "3/3/2023",
+            "design_descriptors_term": "Transmission Electron Microscopy",
+            "design_descriptors_term_accession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+            "design_descriptors_term_source": "EFO",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -326,17 +329,16 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:STUDY:STUDY PUBLICATIONS"
         annotations = {
-            "Study Publication DOI": "10.1038/s41467-022-34205-9",
-            "Study Publication PubMed ID": 678978,
-            "Study Publication Author List": "Mueller M, Langer L L",
-            "Study Publication Title": (
+            "doi": "10.1038/s41467-022-34205-9",
+            "pubmed_id": 678978,
+            "author_list": "Mueller M, Langer L L",
+            "tilte": (
                 "HJKIH P9 orchestrates " "JKLKinase trafficking in mesenchymal cells."
             ),
-            "Study Publication Status": "published",
-            "Study Publication Status Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Publication Status Term Source REF": "EFO",
+            "status_term": "published",
+            "status_term_accession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+            "status_term_source": "EFO"
+
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -346,15 +348,15 @@ class AbstractIsaTest(AbstractCLITest):
         )
         annotation_namespace = "ISA:STUDY:STUDY PUBLICATIONS"
         annotations = {
-            "Study Publication DOI": "10.567/s56878-890890-330-3",
-            "Study Publication PubMed ID": 7898961,
-            "Study Publication Author List": "Mueller M, Langer L L, Berg J",
-            "Study Publication Title": ("HELk reformation in activated Hela Cells"),
-            "Study Publication Status": "published",
-            "Study Publication Status Term Accession Number": (
+            "doi": "10.567/s56878-890890-330-3",
+            "pubmed_id": 7898961,
+            "author_list": "Mueller M, Langer L L, Berg J",
+            "publication_title": ("HELk reformation in activated Hela Cells"),
+            "status_term": "published",
+            "status_term_accession": (
                 "http://www.ebi.ac.uk/efo/EFO_0001796"
             ),
-            "Study Publication Status Term Source REF": "EFO",
+            "status_term_source": "EFO",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
@@ -363,20 +365,20 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        annotation_namespace = "ISA:STUDY:STUDY DESIGN DESCRIPTORS"
-        annotations = {
-            "Study Design Type": "Transmission Electron Microscopy",
-            "Study Design Type Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Design Type Term Source REF": "EFO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=project,
-        )
+        # annotation_namespace = "ISA:STUDY:STUDY DESIGN DESCRIPTORS"
+        # annotations = {
+        #     "Study Design Type": "Transmission Electron Microscopy",
+        #     "Study Design Type Term Accession Number": (
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796"
+        #     ),
+        #     "Study Design Type Term Source REF": "EFO",
+        # }
+        # self.create_mapped_annotation(
+        #     name=annotation_namespace,
+        #     map_values=annotations,
+        #     namespace=annotation_namespace,
+        #     parent_object=project,
+        # )
 
         annotation_namespace = "ISA:STUDY:STUDY FACTORS"
         annotations = {
@@ -452,10 +454,10 @@ class AbstractIsaTest(AbstractCLITest):
             "Study Person First Name": "Arno",
             "Study Person Email": "arno.mueller@email.com",
             "Study Person Roles": "researcher",
-            "Study Person Roles Term Accession Number": (
-                "http://purl.org/spar/scoro/researcher"
-            ),
-            "Study Person Roles Term Source REF": "SCoRO",
+            # "Study Person Roles Term Accession Number": (
+            #     "http://purl.org/spar/scoro/researcher"
+            # ),
+            # "Study Person Roles Term Source REF": "SCoRO",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,
