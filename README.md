@@ -1,6 +1,33 @@
 # omero-isa
 Transfer of OMERO metadata to ISA model
 
+### Installation
+
+### How to use it
+
+* Export Omero Project
+  ```bash
+  omero login # login to omero
+  omero transfer pack --plugin isa Project:414 path/to/my/isa-project # export
+  ```
+
+  The export produces a file structure as follows:
+  ```bash
+  ├── assays
+  │   ├── my-first-assay
+  │   │   └── dataset
+  │   │       ├── 1977.tiff
+  │   │       ├── 1978.tiff
+  │   │       └── 1979.tiff
+  │   └── my-second-assay
+  │       └── dataset
+  │           ├── 1980.tiff
+  │           ├── 1981.tiff
+  │           └── 1982.tiff
+  ├── i_investigation.json
+  ```
+
+
 ### Install omero-isa plugin
 
 
