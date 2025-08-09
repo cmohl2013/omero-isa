@@ -11,21 +11,33 @@ Transfer of OMERO metadata to ISA model
   omero transfer pack --plugin isa Project:414 path/to/my/isa-project # export
   ```
 
-  The export produces a file structure as follows:
+
+### How is OMERO data mapped to the ISA data model?
+
+  The export of an OMERO project produces an ISA model that is represented in the follwing file structure:
   ```bash
-  ├── assays
-  │   ├── my-first-assay
-  │   │   └── dataset
-  │   │       ├── 1977.tiff
-  │   │       ├── 1978.tiff
-  │   │       └── 1979.tiff
-  │   └── my-second-assay
-  │       └── dataset
-  │           ├── 1980.tiff
-  │           ├── 1981.tiff
-  │           └── 1982.tiff
-  ├── i_investigation.json
+   ├── assays
+   │   ├── my-assay-with-annotations
+   │   │   └── dataset
+   │   │       ├── 1992.tiff
+   │   │       ├── CD_s_1_t_3_c_2_z_5.czi
+   │   │       └── sted-confocal.lif
+   │   └── my-first-assay
+   │       └── dataset
+   │           ├── 1989.tiff
+   │           ├── 1990.tiff
+   │           └── 1991.tiff
+   ├── i_investigation.json
   ```
+
+  * The exported OMERO project represents one ISA investigation containing exactly one study.
+  * OMERO datasets are represented as ISA assays.
+  * OMERO images are represented as ISA datasets. The original image files are stored within the assay folder under *dataset*.
+  * All metadata is stored in one ISA json in the top folder.
+
+
+
+
 
 
 ### Install omero-isa plugin

@@ -1,0 +1,620 @@
+{
+    "comments": [],
+    "description": "Observation of MDV formation in Mitochondria",
+    "identifier": "my-custom-investigation-id",
+    "ontologySourceReferences": [],
+    "people": [
+        {
+            "address": "",
+            "affiliation": "",
+            "comments": [],
+            "email": "arno.mueller@email.com",
+            "fax": "",
+            "firstName": "Arno",
+            "lastName": "Mueller",
+            "midInitials": "",
+            "phone": "",
+            "roles": [
+                {
+                    "@id": "#ontology_annotation/96d1ff67-fd8f-4fd0-bfc5-a4486a8dc2f5",
+                    "annotationValue": "researcher",
+                    "comments": [],
+                    "termAccession": "http://purl.org/spar/scoro/researcher",
+                    "termSource": "SCoRO"
+                }
+            ]
+        }
+    ],
+    "publicReleaseDate": "1/12/2022",
+    "publications": [
+        {
+            "authorList": "Mueller M, Langer L L",
+            "comments": [],
+            "doi": "10.1038/s41467-022-34205-9",
+            "pubMedID": "678978",
+            "status": {
+                "@id": "#ontology_annotation/c31cdaca-8fbc-45ec-b69e-bf8d3134f3aa",
+                "annotationValue": "published",
+                "comments": [],
+                "termAccession": "",
+                "termSource": ""
+            },
+            "title": "HJKIH P9 orchestrates JKLKinase trafficking in mesenchymal cells."
+        },
+        {
+            "authorList": "Meier M, Kluge L L",
+            "comments": [],
+            "doi": "10.1038/s41467-022-34789-9",
+            "pubMedID": "678978",
+            "status": {
+                "@id": "#ontology_annotation/2381cd9b-d77d-4a6c-bc95-2edfab9c354a",
+                "annotationValue": "published",
+                "comments": [],
+                "termAccession": "",
+                "termSource": ""
+            },
+            "title": "Rho GTPase is downreglated upon JK0897 treatment"
+        }
+    ],
+    "studies": [
+        {
+            "assays": [
+                {
+                    "characteristicCategories": [],
+                    "comments": [],
+                    "dataFiles": [
+                        {
+                            "@id": "#data_file/5e81d294-6b55-46a0-b759-eb4e78e21b2a",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1996"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Overlay001]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:05"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/94442638-8fca-47e3-ad72-1e5530ff95b0",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1995"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Series003]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:18"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/7299535f-e08d-4ec2-a477-d683bacdf275",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1994"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Fab Antikoerper]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:05"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/6e00617d-1aba-48da-9f7e-4b426f83ae3b",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1993"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "CD_s_1_t_3_c_2_z_5.czi"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2016-02-12T10:41:02.491000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "240"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "170"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "5"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.09057667415221031"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.09057667415221031"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "0.32"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/CD_s_1_t_3_c_2_z_5.czi",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/4a314187-3139-493b-be75-ff0e66564746",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1992"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "pixel image 1"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2025-08-09T13:01:47.784000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/1992.tiff",
+                            "type": "Raw Image Data File"
+                        }
+                    ],
+                    "filename": "",
+                    "materials": {
+                        "otherMaterials": [],
+                        "samples": []
+                    },
+                    "measurementType": {
+                        "@id": "#ontology_annotation/66a184f6-3e4f-4892-91d0-24d1cde3da1d",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "processSequence": [],
+                    "technologyPlatform": "",
+                    "technologyType": {
+                        "@id": "#ontology_annotation/6e4312f1-31b7-4d74-bcf4-74ac8160ba06",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "unitCategories": []
+                },
+                {
+                    "characteristicCategories": [],
+                    "comments": [],
+                    "dataFiles": [
+                        {
+                            "@id": "#data_file/6771e2bf-db9e-43e2-be89-f8307f4a6fef",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1991"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 2"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2025-08-09T13:01:47.203000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/1991.tiff",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/363226f8-0cca-4182-8c11-c743e2528e91",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1990"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 1"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2025-08-09T13:01:46.722000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/1990.tiff",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/a7601312-5cc6-4c59-9df3-131cfd744c41",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "1989"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 0"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2025-08-09T13:01:46.140000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "36b9c337-215b-49d0-9509-31b75218eeee 36b9c337-215b-49d0-9509-31b75218eeee"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/1989.tiff",
+                            "type": "Raw Image Data File"
+                        }
+                    ],
+                    "filename": "",
+                    "materials": {
+                        "otherMaterials": [],
+                        "samples": []
+                    },
+                    "measurementType": {
+                        "@id": "#ontology_annotation/9f6ca548-b269-487e-94ef-5e6da6f63fd9",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "processSequence": [],
+                    "technologyPlatform": "",
+                    "technologyType": {
+                        "@id": "#ontology_annotation/812f71d7-e05f-4de8-b54d-53fc1e044b48",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "unitCategories": []
+                }
+            ],
+            "characteristicCategories": [],
+            "comments": [],
+            "description": "My custom description.",
+            "factors": [],
+            "filename": "",
+            "identifier": "my-custom-study-id",
+            "materials": {
+                "otherMaterials": [],
+                "samples": [],
+                "sources": []
+            },
+            "people": [],
+            "processSequence": [],
+            "protocols": [],
+            "publicReleaseDate": "3/3/2023",
+            "publications": [
+                {
+                    "authorList": "Mueller M, Langer L L",
+                    "comments": [],
+                    "doi": "10.1038/s41467-022-34205-9",
+                    "pubMedID": "678978",
+                    "status": {
+                        "@id": "#ontology_annotation/03fa8a22-4ed8-40e8-b4ec-e01a71ac4250",
+                        "annotationValue": "published",
+                        "comments": [],
+                        "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                        "termSource": "EFO"
+                    },
+                    "title": ""
+                },
+                {
+                    "authorList": "Mueller M, Langer L L, Berg J",
+                    "comments": [],
+                    "doi": "10.567/s56878-890890-330-3",
+                    "pubMedID": "7898961",
+                    "status": {
+                        "@id": "#ontology_annotation/f96508f4-069e-4ee3-af54-055f171644b7",
+                        "annotationValue": "published",
+                        "comments": [],
+                        "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                        "termSource": "EFO"
+                    },
+                    "title": ""
+                }
+            ],
+            "studyDesignDescriptors": [
+                {
+                    "@id": "#ontology_annotation/19d75a3a-98bc-467b-8c63-8fae15c3df99",
+                    "annotationValue": "Transmission Electron Microscopy",
+                    "comments": [],
+                    "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                    "termSource": "EFO"
+                }
+            ],
+            "submissionDate": "8/11/2022",
+            "title": "My Custom Study Title",
+            "unitCategories": []
+        }
+    ],
+    "submissionDate": "8/11/2022",
+    "title": "Mitochondria in HeLa Cells"
+}

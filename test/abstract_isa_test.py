@@ -228,9 +228,9 @@ class AbstractIsaTest(AbstractCLITest):
 
         annotation_namespace = "ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE"
         annotations = {
-            "Term Source Name": "EFO",
-            "Term Source File": ("http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl"),
-            "Term Source Description": "Experimental Factor Ontology",
+            "name": "EFO",
+            "file": ("http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl"),
+            "description": "Experimental Factor Ontology",
         }
         self.create_mapped_annotation(
             name=annotation_namespace,

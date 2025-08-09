@@ -225,6 +225,14 @@ class OmeroProjectMapper(AbstractIsaMapper):
                     "public_release_date": None,
                 },
             },
+            "investigation_ontology_source_reference": {
+                "namespace": "ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE",
+                "default_values": {
+                    "name": "",
+                    "file": "",
+                    "description": "",
+                },
+            },
             "investigation_contacts": {
                 "namespace": "ISA:INVESTIGATION:INVESTIGATION CONTACTS",
                 "default_values": {
@@ -289,6 +297,7 @@ class OmeroProjectMapper(AbstractIsaMapper):
 
         investigation_params = self.isa_attributes["investigation"]["values"][0]
 
+
         contacts = []
         contact_params = self.isa_attributes.get("investigation_contacts", None)
         if contact_params is not None:
@@ -301,6 +310,11 @@ class OmeroProjectMapper(AbstractIsaMapper):
         investigation_params["contacts"] = contacts
 
         self.investigation = Investigation(**investigation_params)
+
+        ontology_source_params = self.isa_attributes["investigation_ontology_source_reference"]["values"][0]
+        ontology_source = OntologySource(**ontology_source_params)
+        self.investigation.ontology_source_references.append(ontology_source)
+
 
 
         def _create_publications(isa_obj, publication_params):

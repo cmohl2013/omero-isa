@@ -31,6 +31,8 @@ class TestIsaPacker(AbstractIsaTest):
         assert len(d["studies"][0]["publications"]) == 2
         assert len(d["publications"]) == 2
 
+        assert d["ontologySourceReferences"][0]["description"] == "Experimental Factor Ontology"
+
 
 
 
