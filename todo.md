@@ -1,11 +1,12 @@
 ## todo
-* ROI export
+
 * import
 
 ## in progress
 * documentation
 * study factors export
 * study design descriptors export
+* ROI export
 
 
 ## done

@@ -10,7 +10,10 @@ from omero.cli import CLI
 from omero.gateway import BlitzGateway
 from omero.model import MapAnnotationI, NamedValue
 from omero.plugins.sessions import SessionsControl
-from omero.rtypes import rstring
+from omero.rtypes import rstring, rint
+from omero.model import RoiI, PolygonI
+
+
 from omero.testlib import ITest
 from omero_cli_transfer import TransferControl
 
@@ -58,6 +61,23 @@ class AbstractIsaTest(AbstractCLITest):
             self.link(parent_object, map_annotation)
 
         return map_annotation
+
+
+    def add_polygon_to_roi(self, roi, pos_z, pos_c, pos_t, pos_yx):
+
+        points_str = ' '.join([f"{int(e[1])},{int(e[0])}" for e in pos_yx])
+
+        polygon = PolygonI()
+        polygon.setPoints(rstring(points_str))
+        polygon.setTheZ(rint(pos_z))  # z slice
+        polygon.setTheT(rint(pos_t))  # time
+        #polygon.setTheC(rint(pos_c))  # channel
+
+        roi.addShape(polygon)
+
+
+
+
 
     @pytest.fixture(scope="function")
     def dataset_1(self):
@@ -186,6 +206,25 @@ class AbstractIsaTest(AbstractCLITest):
             name="pixel image 1",
         )
         self.link(dataset, image_tif)
+        roi = RoiI()
+        roi.setImage(image_tif)
+
+        self.add_polygon_to_roi(
+            roi,
+            pos_z=0,
+            pos_c=0,
+            pos_t=0,
+            pos_yx=[(10, 10), (10, 90), (80, 50)])
+
+
+        update_service = self.client.sf.getUpdateService()
+        saved_roi = update_service.saveAndReturnObject(roi)
+
+
+
+
+
+        pass
 
 
 
