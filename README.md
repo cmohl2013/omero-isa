@@ -21,6 +21,7 @@ Transfer of OMERO metadata to ISA model
    │   │   └── dataset
    │   │       ├── 1992.tiff
    │   │       ├── CD_s_1_t_3_c_2_z_5.czi
+   |   |       |–– CD_s_1_t_3_c_2_z_5_roidata.json
    │   │       └── sted-confocal.lif
    │   └── my-first-assay
    │       └── dataset
@@ -33,7 +34,9 @@ Transfer of OMERO metadata to ISA model
   * The exported OMERO project represents one ISA investigation containing exactly one study.
   * OMERO datasets are represented as ISA assays.
   * OMERO images are represented as ISA datasets. The original image files are stored within the assay folder under *dataset*.
+  * If OMERO images contain ROI objects, these are exported as `json` files in the image folder. In the example above, the `czi` image includes ROI data.
   * All metadata is stored in one ISA json in the top folder.
+  * If ROIs exist, the json file with ROI information is linked in the metadata `json` file as part of the image metadata.
 
 
 

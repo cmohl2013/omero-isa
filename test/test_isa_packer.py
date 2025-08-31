@@ -33,6 +33,15 @@ class TestIsaPacker(AbstractIsaTest):
 
         assert d["ontologySourceReferences"][0]["description"] == "Experimental Factor Ontology"
 
+        dataset_path = tmp_path / "my_arc/assays/my-assay-with-annotations/dataset"
+        assert (dataset_path / "sted-confocal.lif").exists()
+
+
+        roi_filenames = list(dataset_path.glob("*_roidata.json"))
+
+        assert len(roi_filenames) == 1
+
+
 
 
 

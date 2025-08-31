@@ -63,8 +63,11 @@ def export_rois_to_json(json_path, image, conn):
             roi_data["shapes"].append(shape_info)
         data.append(roi_data)
 
-    with open(json_path, "w") as f:
-        json.dump(data, f, indent=2)
+    if len(data) > 0:
+        with open(json_path, "w") as f:
+            json.dump(data, f, indent=2)
+        return json_path
+    return None
 
 
 

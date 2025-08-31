@@ -9,6 +9,8 @@ from functools import lru_cache
 import os
 import shutil
 
+from omero_isa.roi import export_rois_to_json
+
 
 
 def get_image_metadata_omero(image):
@@ -169,6 +171,7 @@ class OmeroDatasetMapper(AbstractIsaMapper):
         self._create_isa_attributes()
 
         assay_params = self.isa_attributes["assay"]["values"][0]
+        assay_params["comments"] = [Comment("identifier", self.assay_identifier)]
         self.assay = Assay(**assay_params)
 
 
@@ -188,9 +191,19 @@ class OmeroDatasetMapper(AbstractIsaMapper):
             target_path_rel = dest_image_folder_rel / img_filepath_rel.name
 
             os.makedirs(target_path.parent, exist_ok=True)
+            # save original image file
             shutil.copy2(img_filepath_abs, target_path)
+            # save rois if exist
+            roi_path = target_path.with_suffix("").with_name(target_path.stem + "_roidata").with_suffix(".json")
+            roidata_path = export_rois_to_json(roi_path, image, self.conn)
+
+
 
             image_metadata = get_image_metadata_omero(image)
+
+            if roidata_path is not None:
+                    image_metadata.append(Comment("roidata_filename", roidata_path.name))
+
             img_datafile = DataFile(filename=str(target_path_rel),
                                     label="Raw Image Data File",
                                     comments=image_metadata)

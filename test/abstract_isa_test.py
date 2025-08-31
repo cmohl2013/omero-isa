@@ -223,11 +223,6 @@ class AbstractIsaTest(AbstractCLITest):
 
 
 
-
-        pass
-
-
-
         def _add_local_image_file(path_to_img_file):
             assert path_to_img_file.exists()
             target_str = f"Dataset:{dataset.id._val}"
@@ -243,7 +238,19 @@ class AbstractIsaTest(AbstractCLITest):
 
 
         path_to_img_file = Path(__file__).parent / "data/img_files/sted-confocal.lif"
-        _add_local_image_file(path_to_img_file=path_to_img_file)
+        lif_img_ids = _add_local_image_file(path_to_img_file=path_to_img_file)
+        # image_lif = self.gw.getObject("Image", lif_img_ids[0])
+
+        # roi = RoiI()
+        # roi.setImage(image_lif)
+        # self.add_polygon_to_roi(
+        #     roi,
+        #     pos_z=0,
+        #     pos_c=0,
+        #     pos_t=0,
+        #     pos_yx=[(10, 10), (10, 90), (80, 50)])
+        # update_service = self.client.sf.getUpdateService()
+        # saved_roi = update_service.saveAndReturnObject(roi)
 
         return dataset
 
