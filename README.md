@@ -89,3 +89,7 @@ Test User Credentials:
 ```
 self.user.getOmeName()._val
 ```
+Or run following test to print test user credentials:
+```
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest -s -k print_test_user_credentials
+```

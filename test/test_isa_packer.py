@@ -4,6 +4,10 @@ import json
 
 class TestIsaPacker(AbstractIsaTest):
 
+    def test_print_test_user_credentials(self, project_with_arc_assay_annotation):
+        print(f"test user: {self.user.getOmeName()._val}")
+
+
     def test_isa_packer_with_assay_annotation(self,
                                               project_with_arc_assay_annotation,
                                               tmp_path,
