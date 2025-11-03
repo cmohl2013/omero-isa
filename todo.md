@@ -1,20 +1,29 @@
 ## todo
 
-* import
+* mapped annotation class for import
+* image class for import
+* dataset class for import
+* project class for import
+* user interface for import
+
+## optional
+* study factors export
+* study design descriptors export
 
 ## in progress
 * documentation
-* study factors export
-* study design descriptors export
+
 
 
 
 ## done
+* omero namespace export
 * image export
 * image metadata to isa
 * implement term source metadata
 * ontology source references export
 * ROI export
+
 
 
 ### konzept roi export
@@ -43,7 +52,7 @@ pixel datensatz.
 
 * Image names are taken form the dataFile comment "name"
 
-#### logic flow export
+#### logic flow import
 
 1st json level (project):
 * create a new project for each study (name from study title)
