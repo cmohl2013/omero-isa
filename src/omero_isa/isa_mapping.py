@@ -117,7 +117,12 @@ class AbstractIsaMapper:
             else:
                 assert len(isa_attributes[annotation_type]["values"]) == len(isa_attributes[annotation_type]["ontology_values"])
 
+
+            # omero metadata export
+            # namespaces are saved in isa comments to faciliate isa import to omero
+            isa_attributes[annotation_type]["values"][0]["comments"] = [Comment("omero_annotation_namespace", config["namespace"])]
             self.isa_attributes = isa_attributes
+
 
     @lru_cache
     def _all_annotatation_objects(self):
@@ -171,7 +176,7 @@ class OmeroDatasetMapper(AbstractIsaMapper):
         self._create_isa_attributes()
 
         assay_params = self.isa_attributes["assay"]["values"][0]
-        assay_params["comments"] = [Comment("identifier", self.assay_identifier)]
+        assay_params["comments"].append(Comment("identifier", self.assay_identifier))
         self.assay = Assay(**assay_params)
 
 

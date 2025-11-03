@@ -30,6 +30,13 @@ class TestIsaPacker(AbstractIsaTest):
             d = json.load(f)
 
         assert d["identifier"] == "my-custom-investigation-id"
+
+        assert d["ontologySourceReferences"][0]["comments"][0]["name"] == "omero_annotation_namespace"
+        assert d["ontologySourceReferences"][0]["comments"][0]["value"] == "ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE"
+
+        assert d["studies"][0]["comments"][0]["name"] == "omero_annotation_namespace"
+        assert d["studies"][0]["comments"][0]["value"] == "ISA:STUDY:STUDY"
+
         assert d["studies"][0]["identifier"] == "my-custom-study-id"
         assert len(d["studies"][0]["assays"]) == 2
         assert len(d["studies"][0]["publications"]) == 2
