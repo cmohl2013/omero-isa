@@ -76,11 +76,16 @@ class TestIsaStudyImporter(AbstractIsaTest):
 
         maf = MappedAnnotationFactory(data)
 
+        maf_study = MappedAnnotationFactory(data["studies"][0])
+
+
         conn = self.gw
 
         imp = IsaInvestigationImporter(data)
         omero_project = imp.save(conn)
 
         maf.save(conn, parent_object=omero_project)
+        maf_study.save(conn, parent_object=omero_project)
+
 
         print(self.user.getOmeName()._val)

@@ -20,6 +20,39 @@ class IsaInvestigationImporter:
         self.data = data
         self.study_data = data["studies"][0]
 
+    def _add_mapped_annotations(self, parent_object, conn):
+
+        try:
+            maf = MappedAnnotationFactory(self.data)
+            maf.save(conn, parent_object=parent_object)
+        except AssertionError:
+            pass
+
+        try:
+            maf = MappedAnnotationFactory(self.study_data)
+            maf.save(conn, parent_object=parent_object)
+        except AssertionError:
+            pass
+
+
+        for k in self.data.keys():
+            try:
+                maf = MappedAnnotationFactory(self.data[k])
+                maf.save(conn, parent_object=parent_object)
+            except AssertionError:
+                pass
+
+
+        #TODO es werden hier noch keine listen abgearbeitet (people, publications..)
+        # better hardcode
+
+        for k in self.study_data.keys():
+            try:
+                maf = MappedAnnotationFactory(self.study_data[k])
+                maf.save(conn, parent_object=parent_object)
+            except AssertionError:
+                pass
+
 
 
     def save(self, conn):
@@ -32,7 +65,7 @@ class IsaInvestigationImporter:
 
         # Save the project to the server
         project = conn.getUpdateService().saveAndReturnObject(project)
-
+        self._add_mapped_annotations(project, conn)
         return project
 
 
@@ -42,6 +75,7 @@ class MappedAnnotationFactory:
     def __init__(self, data):
 
 
+        assert isinstance(data, dict)
         assert "comments" in data.keys()
         assert data["comments"][0]["name"] == "omero_annotation_namespace"
 

@@ -1,9 +1,8 @@
 ## todo
 
-* mapped annotation class for import
+
 * image class for import
 * dataset class for import
-* project class for import
 * user interface for import
 
 ## optional
@@ -12,11 +11,16 @@
 
 ## in progress
 * documentation
+* mapped annotation class for import
+  * mapped annotations for lists (people, publications) tbd
+
 
 
 
 
 ## done
+
+* project class for import
 * omero namespace export
 * image export
 * image metadata to isa

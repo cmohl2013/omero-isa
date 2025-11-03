@@ -120,8 +120,10 @@ class AbstractIsaMapper:
 
             # omero metadata export
             # namespaces are saved in isa comments to faciliate isa import to omero
-            isa_attributes[annotation_type]["values"][0]["comments"] = [Comment("omero_annotation_namespace", config["namespace"])]
-            self.isa_attributes = isa_attributes
+
+            for i in range(len(isa_attributes[annotation_type]["values"])):
+                isa_attributes[annotation_type]["values"][i]["comments"] = [Comment("omero_annotation_namespace", config["namespace"])]
+                self.isa_attributes = isa_attributes
 
 
     @lru_cache
