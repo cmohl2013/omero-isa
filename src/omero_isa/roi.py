@@ -126,4 +126,7 @@ def import_rois_from_json(json_path, image, conn):
             shape.setTheC(c)
             roi.addShape(shape)
 
+
+        print(f"import ROI from file {json_path}")
         update_service.saveAndReturnObject(roi)
+        return roi

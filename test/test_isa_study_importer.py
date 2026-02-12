@@ -80,12 +80,27 @@ class TestIsaStudyImporter(AbstractIsaTest):
 
 
         conn = self.gw
-
         imp = IsaInvestigationImporter(data)
         omero_project = imp.save(conn)
 
-        maf.save(conn, parent_object=omero_project)
-        maf_study.save(conn, parent_object=omero_project)
 
 
         print(self.user.getOmeName()._val)
+
+    def test_create_full_omero_project(self, path_test_data):
+        import json
+        path_to_arc = path_test_data / "data_to_import_1/i_investigation.json"
+
+
+        with open(path_to_arc, "r", encoding="utf-8") as fh:
+            data = json.load(fh)
+
+        imp = IsaInvestigationImporter(data, path_to_arc)
+        conn = self.gw
+        omero_project = imp.save(conn)
+
+        assert omero_project is not None
+        print(omero_project.getId().getValue())
+        print(self.user.getOmeName()._val)
+
+        pass

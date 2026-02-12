@@ -618,3 +618,7 @@ class AbstractIsaTest(AbstractCLITest):
             xmldata = f.read()
         ome = from_xml(xmldata)
         return list_file_ids(ome)
+
+    @pytest.fixture(scope="function")
+    def path_test_data(self):
+        return Path(__file__).parent / "data"
