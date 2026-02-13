@@ -39,7 +39,7 @@
             "phone": "",
             "roles": [
                 {
-                    "@id": "#ontology_annotation/3957b97d-c417-4e28-8678-eeeb59c86e4c",
+                    "@id": "#ontology_annotation/114ec8bc-9668-44e1-9452-d221451a33cd",
                     "annotationValue": "researcher",
                     "comments": [],
                     "termAccession": "http://purl.org/spar/scoro/researcher",
@@ -61,7 +61,7 @@
             "doi": "10.1038/s41467-022-34789-9",
             "pubMedID": "678978",
             "status": {
-                "@id": "#ontology_annotation/6fa5ae75-7aca-4e89-9751-46195aa53591",
+                "@id": "#ontology_annotation/926c67b4-f1cf-437b-af4d-baaff0d33d1c",
                 "annotationValue": "published",
                 "comments": [],
                 "termAccession": "",
@@ -80,7 +80,7 @@
             "doi": "10.1038/s41467-022-34205-9",
             "pubMedID": "678978",
             "status": {
-                "@id": "#ontology_annotation/be111084-f9b3-45d0-9f74-8dfe1858ed57",
+                "@id": "#ontology_annotation/e3f36056-5458-4cad-878b-709d81895d90",
                 "annotationValue": "published",
                 "comments": [],
                 "termAccession": "",
@@ -106,11 +106,11 @@
                     ],
                     "dataFiles": [
                         {
-                            "@id": "#data_file/6b1df4e4-789e-4957-b543-48c9f61d08bc",
+                            "@id": "#data_file/54fc4729-93cb-44d0-b98e-c2050f261d81",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3735"
+                                    "value": "4637"
                                 },
                                 {
                                     "name": "name",
@@ -126,7 +126,7 @@
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -161,11 +161,11 @@
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/7970ccde-e496-4775-8e1b-a1ff654a27f3",
+                            "@id": "#data_file/b0d0ff2e-055c-485e-8ff1-bd964606ab97",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3734"
+                                    "value": "4636"
                                 },
                                 {
                                     "name": "name",
@@ -181,7 +181,7 @@
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -216,11 +216,11 @@
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/8aded8ef-b35f-466b-b97d-21919845ac26",
+                            "@id": "#data_file/d58428c8-444c-4753-9372-b81f2668df8f",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3733"
+                                    "value": "4635"
                                 },
                                 {
                                     "name": "name",
@@ -236,7 +236,7 @@
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -271,11 +271,11 @@
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/aeb47bc3-2461-48e2-b97a-acc5a080c888",
+                            "@id": "#data_file/9298b577-87b8-4996-88ad-decec3bb34e1",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3732"
+                                    "value": "4634"
                                 },
                                 {
                                     "name": "name",
@@ -291,7 +291,7 @@
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -326,11 +326,11 @@
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/cd74cf46-bc57-4ebf-9210-141b121c566c",
+                            "@id": "#data_file/64318323-e5b3-4db6-b04c-c4b0067c5f6f",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3731"
+                                    "value": "4633"
                                 },
                                 {
                                     "name": "name",
@@ -342,11 +342,11 @@
                                 },
                                 {
                                     "name": "acquisition_time",
-                                    "value": "2026-02-13T11:18:53.098000"
+                                    "value": "2026-02-13T15:35:19.349000"
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -378,10 +378,10 @@
                                 },
                                 {
                                     "name": "roidata_filename",
-                                    "value": "3731_roidata.json"
+                                    "value": "4633_roidata.json"
                                 }
                             ],
-                            "name": "assays/my-assay-with-annotations/dataset/3731.tiff",
+                            "name": "assays/my-assay-with-annotations/dataset/4633.tiff",
                             "type": "Raw Image Data File"
                         }
                     ],
@@ -391,19 +391,19 @@
                         "samples": []
                     },
                     "measurementType": {
-                        "@id": "#ontology_annotation/a7e0ccb0-d160-4827-ac43-b1585475a049",
-                        "annotationValue": "",
+                        "@id": "#ontology_annotation/de95862d-cebf-489e-ab3a-05eb43a4259d",
+                        "annotationValue": "High resolution transmission electron micrograph",
                         "comments": [],
-                        "termAccession": "",
-                        "termSource": ""
+                        "termAccession": "http://purl.obolibrary.org/obo/CHMO_0002125",
+                        "termSource": "CHMO"
                     },
                     "processSequence": [],
                     "technologyPlatform": "",
                     "technologyType": {
-                        "@id": "#ontology_annotation/af90d846-6860-4610-807e-e9b4884ee869",
-                        "annotationValue": "",
+                        "@id": "#ontology_annotation/63a0e19f-567d-417a-9be4-4cf2e7827864",
+                        "annotationValue": "transmission electron microscopy",
                         "comments": [],
-                        "termAccession": "",
+                        "termAccession": "http://www.bioassayontology.org/bao#BAO_0000455",
                         "termSource": ""
                     },
                     "unitCategories": []
@@ -422,11 +422,11 @@
                     ],
                     "dataFiles": [
                         {
-                            "@id": "#data_file/db3be232-0e22-4837-b728-e8b02ce76815",
+                            "@id": "#data_file/5ec92e3a-5fc8-4e74-acf3-50ce12f0a43e",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3730"
+                                    "value": "4632"
                                 },
                                 {
                                     "name": "name",
@@ -438,11 +438,11 @@
                                 },
                                 {
                                     "name": "acquisition_time",
-                                    "value": "2026-02-13T11:18:52.779000"
+                                    "value": "2026-02-13T15:35:18.896000"
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -473,15 +473,15 @@
                                     "value": "None"
                                 }
                             ],
-                            "name": "assays/my-first-assay/dataset/3730.tiff",
+                            "name": "assays/my-first-assay/dataset/4632.tiff",
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/2de3d81a-d7b8-4e45-8035-e363df48152e",
+                            "@id": "#data_file/45265946-fb26-4b83-a986-728b8efe0902",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3729"
+                                    "value": "4631"
                                 },
                                 {
                                     "name": "name",
@@ -493,11 +493,11 @@
                                 },
                                 {
                                     "name": "acquisition_time",
-                                    "value": "2026-02-13T11:18:52.554000"
+                                    "value": "2026-02-13T15:35:18.635000"
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -528,15 +528,15 @@
                                     "value": "None"
                                 }
                             ],
-                            "name": "assays/my-first-assay/dataset/3729.tiff",
+                            "name": "assays/my-first-assay/dataset/4631.tiff",
                             "type": "Raw Image Data File"
                         },
                         {
-                            "@id": "#data_file/29774965-1f42-4867-8556-f8f4e7e08fe6",
+                            "@id": "#data_file/b1b6c872-c23d-415c-8fef-5b47a3f10d06",
                             "comments": [
                                 {
                                     "name": "omero_image_id",
-                                    "value": "3728"
+                                    "value": "4630"
                                 },
                                 {
                                     "name": "name",
@@ -548,11 +548,11 @@
                                 },
                                 {
                                     "name": "acquisition_time",
-                                    "value": "2026-02-13T11:18:52.245000"
+                                    "value": "2026-02-13T15:35:18.389000"
                                 },
                                 {
                                     "name": "omero_image_owner",
-                                    "value": "56ed4f41-9b89-4cb6-ad2b-16c0b500faa5 56ed4f41-9b89-4cb6-ad2b-16c0b500faa5"
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
                                 },
                                 {
                                     "name": "image_size_x",
@@ -583,7 +583,7 @@
                                     "value": "None"
                                 }
                             ],
-                            "name": "assays/my-first-assay/dataset/3728.tiff",
+                            "name": "assays/my-first-assay/dataset/4630.tiff",
                             "type": "Raw Image Data File"
                         }
                     ],
@@ -593,7 +593,7 @@
                         "samples": []
                     },
                     "measurementType": {
-                        "@id": "#ontology_annotation/8905a9a6-bf4f-4863-92a3-01bebd24e9d4",
+                        "@id": "#ontology_annotation/fd66b406-83e9-4812-9532-1404ce20613e",
                         "annotationValue": "",
                         "comments": [],
                         "termAccession": "",
@@ -602,7 +602,7 @@
                     "processSequence": [],
                     "technologyPlatform": "",
                     "technologyType": {
-                        "@id": "#ontology_annotation/e338a631-7e02-4587-90d6-ce37c0f4b119",
+                        "@id": "#ontology_annotation/1ada9f49-6f69-4453-8278-e3a263f82126",
                         "annotationValue": "",
                         "comments": [],
                         "termAccession": "",
@@ -643,7 +643,7 @@
                     "doi": "10.567/s56878-890890-330-3",
                     "pubMedID": "7898961",
                     "status": {
-                        "@id": "#ontology_annotation/d3c8d614-af3a-4175-8a5f-6bae33ff1612",
+                        "@id": "#ontology_annotation/2e37f2eb-fb03-4a99-bee7-29a9897a34f9",
                         "annotationValue": "published",
                         "comments": [],
                         "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
@@ -662,7 +662,7 @@
                     "doi": "10.1038/s41467-022-34205-9",
                     "pubMedID": "678978",
                     "status": {
-                        "@id": "#ontology_annotation/7ae633ab-2c60-46fb-9260-7e536b821cb0",
+                        "@id": "#ontology_annotation/bf23c847-6c08-447a-9f03-934d6d02af0b",
                         "annotationValue": "published",
                         "comments": [],
                         "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
@@ -673,7 +673,7 @@
             ],
             "studyDesignDescriptors": [
                 {
-                    "@id": "#ontology_annotation/385f8433-5d14-481a-9016-e33552a16adf",
+                    "@id": "#ontology_annotation/784bd9fe-5637-42e2-877a-e6d52d3f8f3f",
                     "annotationValue": "Transmission Electron Microscopy",
                     "comments": [],
                     "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
