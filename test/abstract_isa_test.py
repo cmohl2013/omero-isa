@@ -137,13 +137,13 @@ class AbstractIsaTest(AbstractCLITest):
         annotation_namespace = "ISA:ASSAY:ASSAY"
         annotations = {
             "Assay Identifier": "my-custom-assay-id",
-            "Measurement Type": ("High resolution transmission electron micrograph"),
-            "Measurement Type Term Accession Number": (
+            "measurement_type_term": ("High resolution transmission electron micrograph"),
+            "measurement_type_term_accession": (
                 "http://purl.obolibrary.org/obo/CHMO_0002125"
             ),
-            "Measurement Type Term Source REF": "CHMO",
-            "Technology Type": "transmission electron microscopy",
-            "Technology Type Term Accession Number": (
+            "measurement_type_term_source": "CHMO",
+            "technology_type_term": "transmission electron microscopy",
+            "technology_type_term_accession": (
                 "http://www.bioassayontology.org/bao#BAO_0000455"
             ),
             "Technology Type Term Source Ref": "BAO",
@@ -156,44 +156,6 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=dataset,
         )
 
-        annotation_namespace = "ISA:ASSAY:ASSAY PERFORMERS"
-        annotations = {
-            "Last Name": "Doe",
-            "First Name": "John",
-            "Email": "john.doe@email.com",
-            "Phone": "+49 (0)221 12345",
-            "Fax": "+49 (0)221 12347",
-            "Address": "Cologne University, Cologne",
-            "Affiliation": "Institute of Plant Science, Cologne University",
-            "orcid": "789897890ß6",
-            "Roles": "researcher",
-            "Roles Term Accession Number": ("http://purl.org/spar/scoro/researcher"),
-            "Roles Term Source REF": "SCoRO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=dataset,
-        )
-
-        annotation_namespace = "ISA:ASSAY:ASSAY PERFORMERS"
-        annotations = {
-            "Last Name": "Laura",
-            "First Name": "Langer",
-            "Mid Initials": "L",
-            "Email": "laura.l.langer@email.com",
-            "Phone": "0211-12345",
-            "Roles": "researcher",
-            "Roles Term Accession Number": ("http://purl.org/spar/scoro/researcher"),
-            "Roles Term Source REF": "SCoRO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=dataset,
-        )
 
         # image 1
         image_tif = self.create_test_image(
@@ -239,18 +201,7 @@ class AbstractIsaTest(AbstractCLITest):
 
         path_to_img_file = Path(__file__).parent / "data/img_files/sted-confocal.lif"
         lif_img_ids = _add_local_image_file(path_to_img_file=path_to_img_file)
-        # image_lif = self.gw.getObject("Image", lif_img_ids[0])
 
-        # roi = RoiI()
-        # roi.setImage(image_lif)
-        # self.add_polygon_to_roi(
-        #     roi,
-        #     pos_z=0,
-        #     pos_c=0,
-        #     pos_t=0,
-        #     pos_yx=[(10, 10), (10, 90), (80, 50)])
-        # update_service = self.client.sf.getUpdateService()
-        # saved_roi = update_service.saveAndReturnObject(roi)
 
         return dataset
 
@@ -411,9 +362,11 @@ class AbstractIsaTest(AbstractCLITest):
             parent_object=project,
         )
 
-        # annotation_namespace = "ISA:STUDY:STUDY DESIGN DESCRIPTORS"
+
+        # annotation_namespace = "ISA:STUDY:STUDY FACTORS"
         # annotations = {
-        #     "Study Design Type": "Transmission Electron Microscopy",
+        #     "Study Factor Name": "My Factor",
+        #     "Study Factor Type": "Factor for test reasons",
         #     "Study Design Type Term Accession Number": (
         #         "http://www.ebi.ac.uk/efo/EFO_0001796"
         #     ),
@@ -426,73 +379,57 @@ class AbstractIsaTest(AbstractCLITest):
         #     parent_object=project,
         # )
 
-        annotation_namespace = "ISA:STUDY:STUDY FACTORS"
-        annotations = {
-            "Study Factor Name": "My Factor",
-            "Study Factor Type": "Factor for test reasons",
-            "Study Design Type Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Design Type Term Source REF": "EFO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=project,
-        )
+        # annotation_namespace = "ISA:STUDY:STUDY FACTORS"
+        # annotations = {
+        #     "Study Factor Name": "My Second Factor",
+        #     "Study Factor Type": "Factor Number 2 for test reasons",
+        #     "Study Design Type Term Accession Number": (
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796"
+        #     ),
+        #     "Study Design Type Term Source REF": "EFO",
+        # }
+        # self.create_mapped_annotation(
+        #     name=annotation_namespace,
+        #     map_values=annotations,
+        #     namespace=annotation_namespace,
+        #     parent_object=project,
+        # )
 
-        annotation_namespace = "ISA:STUDY:STUDY FACTORS"
-        annotations = {
-            "Study Factor Name": "My Second Factor",
-            "Study Factor Type": "Factor Number 2 for test reasons",
-            "Study Design Type Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Design Type Term Source REF": "EFO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=project,
-        )
-
-        annotation_namespace = "ISA:STUDY:STUDY PROTOCOLS"
-        annotations = {
-            "Study Protocol Name": "Cell embedding for electron microscopy",
-            "Study Protocol Type": "Test Protocol Type",
-            "Study Protocol Type Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Protocol Type Term Source REF": "EFO",
-            "Study Protocol Description": "A protocol for test reasons.",
-            "Study Protocol URI": (
-                "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-            ),
-            "Study Protocol Version": "0.0.1",
-            "Study Protocol Parameters Name": ("temperature;" "glucose concentration"),
-            "Study Protocol Parameters Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796;"
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Protocol Parameters Term Source REF": "EFO;EFO",
-            "Study Protocol Components Name": (
-                "SuperEmeddingMediumX;" "SuperEmeddingMediumY"
-            ),
-            "Study Protocol Components Type": "reagent;reagent",
-            "Study Protocol Components Type Term Accession Number": (
-                "http://www.ebi.ac.uk/efo/EFO_0001796;"
-                "http://www.ebi.ac.uk/efo/EFO_0001796"
-            ),
-            "Study Protocol Components Type Term Source REF": "EFO;EFO",
-        }
-        self.create_mapped_annotation(
-            name=annotation_namespace,
-            map_values=annotations,
-            namespace=annotation_namespace,
-            parent_object=project,
-        )
+        # annotation_namespace = "ISA:STUDY:STUDY PROTOCOLS"
+        # annotations = {
+        #     "Study Protocol Name": "Cell embedding for electron microscopy",
+        #     "Study Protocol Type": "Test Protocol Type",
+        #     "Study Protocol Type Term Accession Number": (
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796"
+        #     ),
+        #     "Study Protocol Type Term Source REF": "EFO",
+        #     "Study Protocol Description": "A protocol for test reasons.",
+        #     "Study Protocol URI": (
+        #         "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
+        #     ),
+        #     "Study Protocol Version": "0.0.1",
+        #     "Study Protocol Parameters Name": ("temperature;" "glucose concentration"),
+        #     "Study Protocol Parameters Term Accession Number": (
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796;"
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796"
+        #     ),
+        #     "Study Protocol Parameters Term Source REF": "EFO;EFO",
+        #     "Study Protocol Components Name": (
+        #         "SuperEmeddingMediumX;" "SuperEmeddingMediumY"
+        #     ),
+        #     "Study Protocol Components Type": "reagent;reagent",
+        #     "Study Protocol Components Type Term Accession Number": (
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796;"
+        #         "http://www.ebi.ac.uk/efo/EFO_0001796"
+        #     ),
+        #     "Study Protocol Components Type Term Source REF": "EFO;EFO",
+        # }
+        # self.create_mapped_annotation(
+        #     name=annotation_namespace,
+        #     map_values=annotations,
+        #     namespace=annotation_namespace,
+        #     parent_object=project,
+        # )
 
         annotation_namespace = "ISA:STUDY:STUDY CONTACTS"
         annotations = {

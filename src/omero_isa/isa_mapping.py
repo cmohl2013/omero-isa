@@ -120,10 +120,12 @@ class AbstractIsaMapper:
 
             # omero metadata export
             # namespaces are saved in isa comments to faciliate isa import to omero
+            self.isa_attributes = isa_attributes
 
-            for i in range(len(isa_attributes[annotation_type]["values"])):
-                isa_attributes[annotation_type]["values"][i]["comments"] = [Comment("omero_annotation_namespace", config["namespace"])]
-                self.isa_attributes = isa_attributes
+            if annotation_type in isa_attributes.keys():
+                for i in range(len(isa_attributes[annotation_type]["values"])):
+                    isa_attributes[annotation_type]["values"][i]["comments"] = [Comment("omero_annotation_namespace", config["namespace"])]
+                    self.isa_attributes = isa_attributes
 
 
     @lru_cache
@@ -162,10 +164,8 @@ class OmeroDatasetMapper(AbstractIsaMapper):
                 "namespace": "ISA:ASSAY:ASSAY",
                 "default_values": {
                     "filename": "", #f"a_{self.assay_identifier}.txt",
-                    "measurement_type": None,
-                    "technology_type": None,
-                    "Technolology_platform": None,
                 },
+                "ontology_annotations":["measurement_type", "technology_type"],
             },
         }
 
@@ -177,9 +177,17 @@ class OmeroDatasetMapper(AbstractIsaMapper):
 
         self._create_isa_attributes()
 
+
+
         assay_params = self.isa_attributes["assay"]["values"][0]
         assay_params["comments"].append(Comment("identifier", self.assay_identifier))
         self.assay = Assay(**assay_params)
+
+        for ontology_source in self.isa_attributes["assay"]["ontology_values"]:
+            if "measurement_type" in ontology_source.keys():
+                self.assay.measurement_type = ontology_source["measurement_type"]
+            if "technology_type" in ontology_source.keys():
+                self.assay.technology_type = ontology_source["technology_type"]
 
 
         dest_image_folder_rel = Path(f"assays/{self.assay_identifier}/dataset")
