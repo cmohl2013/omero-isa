@@ -76,19 +76,28 @@ class IsaInvestigationImporter:
         except AssertionError:
             pass
 
-        try:
-            maf = MappedAnnotationFactory(self.study_data)
-            maf.save(conn, parent_object=parent_object)
-        except AssertionError:
-            pass
+        # try:
+        #     maf = MappedAnnotationFactory(self.study_data)
+        #     maf.save(conn, parent_object=parent_object)
+        # except AssertionError:
+        #     pass
 
 
         for k in self.data.keys():
-            try:
-                maf = MappedAnnotationFactory(self.data[k])
-                maf.save(conn, parent_object=parent_object)
-            except AssertionError:
-                pass
+            d = self.data[k]
+            if isinstance(d, list):
+                for e in d:
+                    try:
+                        maf = MappedAnnotationFactory(e)
+                        maf.save(conn, parent_object=parent_object)
+                    except AssertionError:
+                        pass
+            else:
+                try:
+                    maf = MappedAnnotationFactory(self.data[k])
+                    maf.save(conn, parent_object=parent_object)
+                except AssertionError:
+                    pass
 
 
 
@@ -166,7 +175,7 @@ class ImageFactory:
             raise ValueError("The 'name' key must be present in the data and point to a valid file path.")
 
         image_filepath = self.path_to_arc.parent / file_path
-        assert image_filepath.exists()
+        assert image_filepath.exists(), image_filepath
 
 
         # Upload the image file to OMERO
@@ -209,6 +218,22 @@ class DatasetFactory:
             maf.save(conn, parent_object=parent_object)
         except AssertionError:
             pass
+
+        for k in self.data.keys():
+            d = self.data[k]
+            if isinstance(d, list):
+                for e in d:
+                    try:
+                        maf = MappedAnnotationFactory(e)
+                        maf.save(conn, parent_object=parent_object)
+                    except AssertionError:
+                        pass
+            else:
+                try:
+                    maf = MappedAnnotationFactory(self.data[k])
+                    maf.save(conn, parent_object=parent_object)
+                except AssertionError:
+                    pass
 
     def _add_images(self, parent_object, conn):
 

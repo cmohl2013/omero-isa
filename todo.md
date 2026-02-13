@@ -1,18 +1,17 @@
 ## todo
 
 
-* image class for import
-* dataset class for import
-* user interface for import
-
 ## optional
 * study factors export
 * study design descriptors export
 
 ## in progress
-* documentation
-* mapped annotation class for import
-  * mapped annotations for lists (people, publications) tbd
+* refine mapped annotation export
+* refine mapped annotation import
+* cli for import
+* user documentation
+* poish: refine docstrings
+
 
 
 
@@ -27,6 +26,15 @@
 * implement term source metadata
 * ontology source references export
 * ROI export
+* mapped annotation class for import
+  * mapped annotations for lists (people, publications)
+* omero project import
+* omero dataset import
+* omero image import
+* roi import
+
+
+
 
 
 
