@@ -41,18 +41,24 @@ omero-isa -u username -w password -s localhost "My Project" /path/to/i_investiga
 
 ### Requirements
 
+- Anaconda
 - Python 3.8
 - OMERO.py 5.13+
+
 
 ### From Repository
 
 ```bash
+# Create venv with python 3.8 and zeroc-ice
+conda create -n myenv -c conda-forge python=3.8 zeroc-ice=3.6.5
+conda activate myvenv
+
 # Clone the repository
 git clone https://github.com/cmohl2013/omero-isa.git
 cd omero-isa
 
 # Install in development mode with optional dependencies
-pip install -e .[dev]
+pip install -e .
 ```
 
 ## Usage
