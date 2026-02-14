@@ -35,7 +35,7 @@ jobs:
       - name: Build omero_isa
         run: |
           conda install -y -c conda-forge zeroc-ice=3.6.5
-          python -m pip install .
+          python -m pip install . --ignore-installed
       - name: Run tests
         run: |
           conda install pytest
