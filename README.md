@@ -10,7 +10,10 @@ Transfer of OMERO metadata to ISA model
   omero login # login to omero
   omero transfer pack --plugin isa Project:414 path/to/my/isa-project # export
   ```
-
+* Import Isa data to Omero as new Project
+  ```bash
+  omero-isa -u username -w password -s localhost "My Project" /path/to/i_investigation.json
+  ```
 
 ### How is OMERO data mapped to the ISA data model?
 

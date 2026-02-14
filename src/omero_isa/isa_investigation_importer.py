@@ -42,7 +42,7 @@ def import_and_tag_image(conn, file_path, dataset_id, name, description):
 class IsaInvestigationImporter:
 
 
-    def __init__(self, data, path_to_arc):
+    def __init__(self, data, path_to_arc, project_name=None):
 
 
         # one isa investigation must contain exactly one study
@@ -54,6 +54,7 @@ class IsaInvestigationImporter:
         # must contain annotation_namespace metadata
 
 
+        self.project_name = project_name
 
         self.data = data
         self.study_data = data["studies"][0]
@@ -126,10 +127,11 @@ class IsaInvestigationImporter:
 
     def save(self, conn):
 
-        project_name = self.study_data.get("title", "no_study_title")
+        if self.project_name is None:
+            self.project_name = self.study_data.get("title", "no_study_title")
         project_description = self.study_data.get("description", "")
         project = ProjectI()
-        project.setName(rtypes.rstring(project_name))
+        project.setName(rtypes.rstring(self.project_name))
         project.setDescription(rtypes.rstring(project_description))
 
         # Save the project to the server
