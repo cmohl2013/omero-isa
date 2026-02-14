@@ -203,11 +203,11 @@ Additional documentation is available in the `docs/` folder:
 - [**ARCHITECTURE.md**](docs/ARCHITECTURE.md) - System design and components
 - [**API_REFERENCE.md**](docs/API_REFERENCE.md) - Python API documentation
 - [**EXAMPLES.md**](docs/EXAMPLES.md) - Detailed usage examples
-- [**CLI_TESTS_GUIDE.md**](CLI_TESTS_GUIDE.md) - Testing guide
+
 
 ## License
 
-This project is licensed under the BSD License - see [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE - see [LICENSE](LICENSE) file for details.
 
 ## Support
 
