@@ -34,15 +34,17 @@ jobs:
             python-version: "3.8"
       - name: Build omero_isa
         run: |
-          $CONDA/bin/conda install -c anaconda python=3.8
-          $CONDA/bin/conda install -c conda-forge zeroc-ice=3.6.5
-          $CONDA/bin/python -m pip install .[dev]
+          $$CONDA/bin/conda create -y -n omero_env python=3.8 -c conda-forge
+          source $CONDA/bin/activate omero_env
+          conda install -y -c conda-forge zeroc-ice=3.6.5
+          python -m pip install . --ignore-installed
       - name: Run tests
         run: |
-          $CONDA/bin/conda install pytest
+          source $CONDA/bin/activate omero_env
+          conda install pytest
           export PATH="$CONDA/bin:$PATH"
           export PATH="$HOME/bin:$PATH"
-          $CONDA/bin/pytest -v
+          pytest -v
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config
