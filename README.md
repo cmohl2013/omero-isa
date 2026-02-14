@@ -1,98 +1,215 @@
 # omero-isa
-Transfer of OMERO metadata to ISA model
 
-### Installation
+Bidirectional transfer of research data between OMERO and the ISA (Investigation, Study, Assay) model format.
 
-### How to use it
+**Features:**
+- 📤 Export OMERO Projects to ISA format (ARC - Annotated Research Context)
+- 📥 Import ISA data back into OMERO as Projects
+- 🔗 Preserve metadata, images, and ROI data
+- 🧬 Support for complex research data structures
 
-* Export Omero Project
-  ```bash
-  omero login # login to omero
-  omero transfer pack --plugin isa Project:414 path/to/my/isa-project # export
-  ```
-* Import Isa data to Omero as new Project
-  ```bash
-  omero-isa -u username -w password -s localhost "My Project" /path/to/i_investigation.json
-  ```
+## Table of Contents
 
-### How is OMERO data mapped to the ISA data model?
+- [Quick Start](#quick-start)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Data Mapping](#data-mapping)
+- [CLI Reference](#cli-reference)
+- [Development](#development)
+- [Documentation](#documentation)
 
-  The export of an OMERO project produces an ISA model that is represented in the follwing file structure:
-  ```bash
-   ├── assays
-   │   ├── my-assay-with-annotations
-   │   │   └── dataset
-   │   │       ├── 1992.tiff
-   │   │       ├── CD_s_1_t_3_c_2_z_5.czi
-   |   |       |–– CD_s_1_t_3_c_2_z_5_roidata.json
-   │   │       └── sted-confocal.lif
-   │   └── my-first-assay
-   │       └── dataset
-   │           ├── 1989.tiff
-   │           ├── 1990.tiff
-   │           └── 1991.tiff
-   ├── i_investigation.json
-  ```
+## Quick Start
 
-  * The exported OMERO project represents one ISA investigation containing exactly one study.
-  * OMERO datasets are represented as ISA assays.
-  * OMERO images are represented as ISA datasets. The original image files are stored within the assay folder under *dataset*.
-  * If OMERO images contain ROI objects, these are exported as `json` files in the image folder. In the example above, the `czi` image includes ROI data.
-  * All metadata is stored in one ISA json in the top folder.
-  * If ROIs exist, the json file with ROI information is linked in the metadata `json` file as part of the image metadata.
+### Export: OMERO → ISA Format
 
+```bash
+# Login to OMERO
+omero login
 
-
-
-
-
-### Install omero-isa plugin
-
-
-## Development Environment Setup
-```
-conda create -n myenv -c conda-forge python=3.8 zeroc-ice=3.6.5
-conda activate myvenv
+# Export a project to ISA format
+omero transfer pack --plugin isa Project:414 /path/to/output/isa-project
 ```
 
-### Installation
+### Import: ISA Format → OMERO
+
+```bash
+# Import an ISA project into OMERO
+omero-isa -u username -w password -s localhost "My Project" /path/to/i_investigation.json
 ```
-git clone git@github.com:cmohl2013/omero-isa.git
+
+## Installation
+
+### Requirements
+
+- Python 3.8
+- OMERO.py 5.13+
+
+### From Repository
+
+```bash
+# Clone the repository
+git clone https://github.com/cmohl2013/omero-isa.git
 cd omero-isa
-pip install -e .[dev] # installs optional dependencies including omero-cli-transfer
+
+# Install in development mode with optional dependencies
+pip install -e .[dev]
+```
+
+## Usage
+
+### Import ISA Data into OMERO
+
+```bash
+omero-isa [OPTIONS] PROJECT_NAME INVESTIGATION_FILE
+```
+
+**Options:**
+- `-u, --username`: OMERO username (required)
+- `-w, --password`: OMERO password (required)
+- `-s, --server`: OMERO server hostname (required)
+- `-p, --port`: OMERO server port (default: 4064)
+
+**Example:**
+
+```bash
+omero-isa -u admin -w password -s localhost "My Project" /path/to/i_investigation.json
+```
+
+### Export OMERO Data to ISA Format
+
+```bash
+omero login
+omero transfer pack --plugin isa Project:414 /path/to/export
+```
+
+## Data Mapping
+
+### Directory Structure
+
+```
+my-isa-project/
+├── i_investigation.json          # ISA investigation metadata
+├── s_study.json                  # ISA study metadata
+└── assays/
+    ├── assay-1/
+    │   ├── a_assay.json          # ISA assay metadata
+    │   └── dataset/
+    │       ├── image1.tiff
+    │       ├── image2.czi
+    │       └── image2_roidata.json  # ROI data (if present)
+    └── assay-2/
+        ├── a_assay.json
+        └── dataset/
+            └── ...
+```
+
+### Mapping Rules
+
+| OMERO | ISA |
+|-------|-----|
+| Project | Investigation + Study |
+| Dataset | Assay |
+| Image | Dataset File |
+| ROI | ROI Data (JSON) |
+| Annotations | Metadata |
+
+**Details:**
+- Each OMERO Project represents one ISA Investigation containing one Study
+- OMERO Datasets are mapped to ISA Assays
+- OMERO Images are stored as Dataset files within the Assay folder
+- Region of Interest (ROI) data is exported as separate JSON files
+- All metadata and annotations are preserved in the ISA JSON files
+
+## CLI Reference
+
+### omero-isa Import Command
+
+```bash
+usage: omero-isa [-h] [-u USERNAME] [-w PASSWORD] [-s SERVER] [-p PORT]
+                 PROJECT_NAME INVESTIGATION_FILE
+
+Import ARC repositories into OMERO using ISA format
+
+positional arguments:
+  PROJECT_NAME              Name of the project to create in OMERO
+  INVESTIGATION_FILE        Path to the i_investigation.json file
+
+optional arguments:
+  -h, --help               show this help message and exit
+  -u, --username USERNAME  OMERO username (required)
+  -w, --password PASSWORD  OMERO password (required)
+  -s, --server SERVER      OMERO server hostname (required)
+  -p, --port PORT          OMERO server port (default: 4064)
+```
+
+## Development
+
+### Setup Development Environment
+
+```bash
+# Create conda environment
+conda create -n omero-isa -c conda-forge python=3.8 zeroc-ice=3.6.5
+conda activate omero-isa
+
+# Clone and install
+git clone https://github.com/cmohl2013/omero-isa.git
+cd omero-isa
+pip install -e .[dev]
 conda install pytest
-
 ```
 
-### Start OMERO test database
+### Run OMERO Test Database
 
-Launch OMERO test environment with docker-compose.
-```
-sudo chmod a+x .omero/compose # enure that compose is executable
+```bash
+# Make compose script executable
+sudo chmod a+x .omero/compose
+
+# Start test database
 sudo .omero/compose up
-```
 
-Complete rebuild (e.g. to update omero version):
-```
+# Full rebuild (updates OMERO version)
 sudo .omero/compose up --build
 ```
 
-### Run tests
-```
-OMERODIR="." ICE_CONFIG="test/ice.config" pytest
+### Run Tests
+
+```bash
+# All tests
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest -v
+
+# Specific test file
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest test/test_cli.py -v
+
+# With coverage report
+OMERODIR="." ICE_CONFIG="test/ice.config" pytest --cov=src/omero_isa test/
 ```
 
-### Access to Test DB
+### Test Database Access
 
-```
-http://localhost:4080/
-```
-Test User Credentials:
+- **URL**: http://localhost:4080/
+- **Username**: Available via test framework (`self.user.getOmeName()._val`)
+- **Password**: Same as username
 
-```
-self.user.getOmeName()._val
-```
-Or run following test to print test user credentials:
-```
+Get test credentials:
+
+```bash
 OMERODIR="." ICE_CONFIG="test/ice.config" pytest -s -k print_test_user_credentials
 ```
+
+## Documentation
+
+Additional documentation is available in the `docs/` folder:
+
+- [**ARCHITECTURE.md**](docs/ARCHITECTURE.md) - System design and components
+- [**API_REFERENCE.md**](docs/API_REFERENCE.md) - Python API documentation
+- [**EXAMPLES.md**](docs/EXAMPLES.md) - Detailed usage examples
+- [**CLI_TESTS_GUIDE.md**](CLI_TESTS_GUIDE.md) - Testing guide
+
+## License
+
+This project is licensed under the BSD License - see [LICENSE](LICENSE) file for details.
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/cmohl2013/omero-isa/issues)
+- **Documentation**: See `docs/` folder
