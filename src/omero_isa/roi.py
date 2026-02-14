@@ -1,3 +1,26 @@
+"""
+ROI (Region of Interest) handling for OMERO ISA import/export.
+
+This module provides functionality to export ROI data from OMERO images to JSON
+format and import ROI data from JSON back into OMERO. Supports multiple ROI shape
+types including polygons, rectangles, ellipses, lines, points, and labels.
+
+ROI data is stored with full spatial information (z, t, c dimensions) and can be
+round-tripped between OMERO and ISA format.
+
+Functions:
+    export_rois_to_json: Export OMERO ROIs to JSON file
+    import_rois_from_json: Import ROIs from JSON file into OMERO
+
+Supported Shapes:
+    - PolygonI: Multi-point polygon shapes
+    - RectangleI: Rectangular regions with x, y, width, height
+    - EllipseI: Elliptical regions with center and radii
+    - LineI: Line segments with start and end points
+    - PointI: Single point regions
+    - LabelI: Text labels with position
+
+"""
 from omero.model import (
     RoiI, PolygonI, RectangleI, EllipseI, LineI, PointI, LabelI
 )
@@ -5,11 +28,55 @@ from omero.rtypes import rstring, rint, rdouble
 import json
 
 
-
-
 def export_rois_to_json(json_path, image, conn):
+    """Export all ROIs from an OMERO image to a JSON file.
 
+    Retrieves all ROI objects associated with an image and exports them to
+    a JSON file with complete shape information including coordinates and
+    dimensional information (z, t, c).
 
+    Args:
+        json_path (str or Path): Path where the JSON file will be saved.
+        image (omero.model.ImageI): The OMERO image object to export ROIs from.
+        conn (omero.gateway.BlitzGateway): Active OMERO connection.
+
+    Returns:
+        Path or None: The path to the created JSON file if ROIs exist,
+            None if the image has no ROIs.
+
+    Raises:
+        IOError: If the JSON file cannot be written.
+        RuntimeError: If ROI retrieval from OMERO fails.
+
+    Examples:
+        >>> conn = BlitzGateway(...)
+        >>> image = conn.getObject("Image", 123)
+        >>> roi_path = export_rois_to_json(Path("rois.json"), image, conn)
+        >>> print(roi_path)
+        /path/to/rois.json
+
+    JSON Structure:
+        [
+            {
+                "roi_id": 1,
+                "shapes": [
+                    {
+                        "type": "PolygonI",
+                        "z": 0,
+                        "t": 0,
+                        "c": 0,
+                        "points": "10,10 20,20 30,10"
+                    },
+                    ...
+                ]
+            }
+        ]
+
+    Note:
+        - Only exports ROIs that have shapes
+        - Returns None if no ROIs exist (not an error)
+        - Preserves dimension information (z, t, c) for each shape
+    """
     roi_service = conn.getRoiService()
     result = roi_service.findByImage(image.getId(), None)
 
@@ -70,9 +137,65 @@ def export_rois_to_json(json_path, image, conn):
     return None
 
 
-
-
 def import_rois_from_json(json_path, image, conn):
+    """Import ROIs from a JSON file into an OMERO image.
+
+    Reads ROI definitions from a JSON file and creates ROI objects in OMERO.
+    Supports all standard OMERO shape types. Each ROI and its shapes are
+    properly linked to the target image.
+
+    Args:
+        json_path (str or Path): Path to the JSON file containing ROI definitions.
+        image (omero.model.ImageI): The target OMERO image to import ROIs into.
+        conn (omero.gateway.BlitzGateway): Active OMERO connection.
+
+    Returns:
+        omero.model.RoiI: The first imported ROI object (when importing multiple
+            ROIs, the first one is returned for backwards compatibility).
+
+    Raises:
+        FileNotFoundError: If the JSON file doesn't exist.
+        json.JSONDecodeError: If the JSON file is invalid.
+        ValueError: If a shape type is not recognized.
+        RuntimeError: If OMERO save operation fails.
+
+    Examples:
+        >>> conn = BlitzGateway(...)
+        >>> image = conn.getObject("Image", 123)
+        >>> roi = import_rois_from_json(Path("rois.json"), image, conn)
+        >>> print(f"Imported {len(roi.copyShapes())} shapes")
+        Imported 3 shapes
+
+    Supported Shape Types:
+        - PolygonI: points (string of "x,y x,y ...")
+        - RectangleI: x, y, width, height
+        - EllipseI: x, y, radiusX, radiusY
+        - LineI: x1, y1, x2, y2
+        - PointI: x, y
+        - LabelI: x, y, text
+
+    JSON Structure Expected:
+        [
+            {
+                "roi_id": 1,
+                "shapes": [
+                    {
+                        "type": "PolygonI",
+                        "z": 0,
+                        "t": 0,
+                        "c": 0,
+                        "points": "10,10 20,20 30,10"
+                    }
+                ]
+            }
+        ]
+
+    Note:
+        - All shapes must have z, t, c coordinates (can be None)
+        - Unknown shape types are skipped
+        - Each ROI is saved separately to OMERO
+        - Default z, t, c to 0 if not specified
+    """
     with open(json_path, "r") as f:
         roi_data_list = json.load(f)
 
@@ -125,7 +248,6 @@ def import_rois_from_json(json_path, image, conn):
             shape.setTheT(t)
             shape.setTheC(c)
             roi.addShape(shape)
-
 
         print(f"import ROI from file {json_path}")
         update_service.saveAndReturnObject(roi)
