@@ -52,7 +52,7 @@ jobs:
           $CONDA/bin/conda install pytest
           export PATH="$CONDA/bin:$PATH"
           export PATH="$HOME/bin:$PATH"
-          $CONDA/bin/pytest -v -k "not cli"
+          $CONDA/bin/pytest -v -k
         env:
           OMERODIR: .
           ICE_CONFIG: test/ice.config

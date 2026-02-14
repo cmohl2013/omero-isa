@@ -1,20 +1,41 @@
 ## todo
 
-* import
 
-## in progress
-* documentation
+## optional
 * study factors export
 * study design descriptors export
+
+## in progress
+* refine mapped annotation export
+* refine mapped annotation import
+* cli for import
+* user documentation
+* poish: refine docstrings
+
+
+
 
 
 
 ## done
+
+* project class for import
+* omero namespace export
 * image export
 * image metadata to isa
 * implement term source metadata
 * ontology source references export
 * ROI export
+* mapped annotation class for import
+  * mapped annotations for lists (people, publications)
+* omero project import
+* omero dataset import
+* omero image import
+* roi import
+
+
+
+
 
 
 ### konzept roi export
@@ -43,7 +64,7 @@ pixel datensatz.
 
 * Image names are taken form the dataFile comment "name"
 
-#### logic flow export
+#### logic flow import
 
 1st json level (project):
 * create a new project for each study (name from study title)

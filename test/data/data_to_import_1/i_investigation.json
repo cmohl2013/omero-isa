@@ -1,0 +1,690 @@
+{
+    "comments": [
+        {
+            "name": "omero_annotation_namespace",
+            "value": "ISA:INVESTIGATION:INVESTIGATION"
+        }
+    ],
+    "description": "Observation of MDV formation in Mitochondria",
+    "identifier": "my-custom-investigation-id",
+    "ontologySourceReferences": [
+        {
+            "comments": [
+                {
+                    "name": "omero_annotation_namespace",
+                    "value": "ISA:INVESTIGATION:ONTOLOGY SOURCE REFERENCE"
+                }
+            ],
+            "description": "Experimental Factor Ontology",
+            "file": "http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl",
+            "name": "EFO",
+            "version": ""
+        }
+    ],
+    "people": [
+        {
+            "address": "",
+            "affiliation": "",
+            "comments": [
+                {
+                    "name": "omero_annotation_namespace",
+                    "value": "ISA:INVESTIGATION:INVESTIGATION CONTACTS"
+                }
+            ],
+            "email": "arno.mueller@email.com",
+            "fax": "",
+            "firstName": "Arno",
+            "lastName": "Mueller",
+            "midInitials": "",
+            "phone": "",
+            "roles": [
+                {
+                    "@id": "#ontology_annotation/114ec8bc-9668-44e1-9452-d221451a33cd",
+                    "annotationValue": "researcher",
+                    "comments": [],
+                    "termAccession": "http://purl.org/spar/scoro/researcher",
+                    "termSource": "SCoRO"
+                }
+            ]
+        }
+    ],
+    "publicReleaseDate": "1/12/2022",
+    "publications": [
+        {
+            "authorList": "Meier M, Kluge L L",
+            "comments": [
+                {
+                    "name": "omero_annotation_namespace",
+                    "value": "ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
+                }
+            ],
+            "doi": "10.1038/s41467-022-34789-9",
+            "pubMedID": "678978",
+            "status": {
+                "@id": "#ontology_annotation/926c67b4-f1cf-437b-af4d-baaff0d33d1c",
+                "annotationValue": "published",
+                "comments": [],
+                "termAccession": "",
+                "termSource": ""
+            },
+            "title": "Rho GTPase is downreglated upon JK0897 treatment"
+        },
+        {
+            "authorList": "Mueller M, Langer L L",
+            "comments": [
+                {
+                    "name": "omero_annotation_namespace",
+                    "value": "ISA:INVESTIGATION:INVESTIGATION PUBLICATIONS"
+                }
+            ],
+            "doi": "10.1038/s41467-022-34205-9",
+            "pubMedID": "678978",
+            "status": {
+                "@id": "#ontology_annotation/e3f36056-5458-4cad-878b-709d81895d90",
+                "annotationValue": "published",
+                "comments": [],
+                "termAccession": "",
+                "termSource": ""
+            },
+            "title": "HJKIH P9 orchestrates JKLKinase trafficking in mesenchymal cells."
+        }
+    ],
+    "studies": [
+        {
+            "assays": [
+                {
+                    "characteristicCategories": [],
+                    "comments": [
+                        {
+                            "name": "omero_annotation_namespace",
+                            "value": "ISA:ASSAY:ASSAY"
+                        },
+                        {
+                            "name": "identifier",
+                            "value": "my-assay-with-annotations"
+                        }
+                    ],
+                    "dataFiles": [
+                        {
+                            "@id": "#data_file/54fc4729-93cb-44d0-b98e-c2050f261d81",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4637"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Overlay001]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:05"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/b0d0ff2e-055c-485e-8ff1-bd964606ab97",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4636"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Series003]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:18"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/d58428c8-444c-4753-9372-b81f2668df8f",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4635"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "sted-confocal.lif [Fab Antikoerper]"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2014-07-04T14:01:05"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "848"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.022874852420306967"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/sted-confocal.lif",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/9298b577-87b8-4996-88ad-decec3bb34e1",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4634"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "CD_s_1_t_3_c_2_z_5.czi"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": ""
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2016-02-12T10:41:02.491000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "240"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "170"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "5"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "0.09057667415221031"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "0.09057667415221031"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "0.32"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "MICROMETER"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/CD_s_1_t_3_c_2_z_5.czi",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/64318323-e5b3-4db6-b04c-c4b0067c5f6f",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4633"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "pixel image 1"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2026-02-13T15:35:19.349000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "100"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "1"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "roidata_filename",
+                                    "value": "4633_roidata.json"
+                                }
+                            ],
+                            "name": "assays/my-assay-with-annotations/dataset/4633.tiff",
+                            "type": "Raw Image Data File"
+                        }
+                    ],
+                    "filename": "",
+                    "materials": {
+                        "otherMaterials": [],
+                        "samples": []
+                    },
+                    "measurementType": {
+                        "@id": "#ontology_annotation/de95862d-cebf-489e-ab3a-05eb43a4259d",
+                        "annotationValue": "High resolution transmission electron micrograph",
+                        "comments": [],
+                        "termAccession": "http://purl.obolibrary.org/obo/CHMO_0002125",
+                        "termSource": "CHMO"
+                    },
+                    "processSequence": [],
+                    "technologyPlatform": "",
+                    "technologyType": {
+                        "@id": "#ontology_annotation/63a0e19f-567d-417a-9be4-4cf2e7827864",
+                        "annotationValue": "transmission electron microscopy",
+                        "comments": [],
+                        "termAccession": "http://www.bioassayontology.org/bao#BAO_0000455",
+                        "termSource": ""
+                    },
+                    "unitCategories": []
+                },
+                {
+                    "characteristicCategories": [],
+                    "comments": [
+                        {
+                            "name": "omero_annotation_namespace",
+                            "value": "ISA:ASSAY:ASSAY"
+                        },
+                        {
+                            "name": "identifier",
+                            "value": "my-first-assay"
+                        }
+                    ],
+                    "dataFiles": [
+                        {
+                            "@id": "#data_file/5ec92e3a-5fc8-4e74-acf3-50ce12f0a43e",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4632"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 2"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2026-02-13T15:35:18.896000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/4632.tiff",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/45265946-fb26-4b83-a986-728b8efe0902",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4631"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 1"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2026-02-13T15:35:18.635000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/4631.tiff",
+                            "type": "Raw Image Data File"
+                        },
+                        {
+                            "@id": "#data_file/b1b6c872-c23d-415c-8fef-5b47a3f10d06",
+                            "comments": [
+                                {
+                                    "name": "omero_image_id",
+                                    "value": "4630"
+                                },
+                                {
+                                    "name": "name",
+                                    "value": "assay 2 image 0"
+                                },
+                                {
+                                    "name": "description",
+                                    "value": "description"
+                                },
+                                {
+                                    "name": "acquisition_time",
+                                    "value": "2026-02-13T15:35:18.389000"
+                                },
+                                {
+                                    "name": "omero_image_owner",
+                                    "value": "a38f0bbe-8777-4ee3-9483-f6b134196638 a38f0bbe-8777-4ee3-9483-f6b134196638"
+                                },
+                                {
+                                    "name": "image_size_x",
+                                    "value": "80"
+                                },
+                                {
+                                    "name": "image_size_y",
+                                    "value": "40"
+                                },
+                                {
+                                    "name": "image_size_z",
+                                    "value": "3"
+                                },
+                                {
+                                    "name": "pixel_size_x",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_y",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_z",
+                                    "value": "None"
+                                },
+                                {
+                                    "name": "pixel_size_unit",
+                                    "value": "None"
+                                }
+                            ],
+                            "name": "assays/my-first-assay/dataset/4630.tiff",
+                            "type": "Raw Image Data File"
+                        }
+                    ],
+                    "filename": "",
+                    "materials": {
+                        "otherMaterials": [],
+                        "samples": []
+                    },
+                    "measurementType": {
+                        "@id": "#ontology_annotation/fd66b406-83e9-4812-9532-1404ce20613e",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "processSequence": [],
+                    "technologyPlatform": "",
+                    "technologyType": {
+                        "@id": "#ontology_annotation/1ada9f49-6f69-4453-8278-e3a263f82126",
+                        "annotationValue": "",
+                        "comments": [],
+                        "termAccession": "",
+                        "termSource": ""
+                    },
+                    "unitCategories": []
+                }
+            ],
+            "characteristicCategories": [],
+            "comments": [
+                {
+                    "name": "omero_annotation_namespace",
+                    "value": "ISA:STUDY:STUDY"
+                }
+            ],
+            "description": "My custom description.",
+            "factors": [],
+            "filename": "",
+            "identifier": "my-custom-study-id",
+            "materials": {
+                "otherMaterials": [],
+                "samples": [],
+                "sources": []
+            },
+            "people": [],
+            "processSequence": [],
+            "protocols": [],
+            "publicReleaseDate": "3/3/2023",
+            "publications": [
+                {
+                    "authorList": "Mueller M, Langer L L, Berg J",
+                    "comments": [
+                        {
+                            "name": "omero_annotation_namespace",
+                            "value": "ISA:STUDY:STUDY PUBLICATIONS"
+                        }
+                    ],
+                    "doi": "10.567/s56878-890890-330-3",
+                    "pubMedID": "7898961",
+                    "status": {
+                        "@id": "#ontology_annotation/2e37f2eb-fb03-4a99-bee7-29a9897a34f9",
+                        "annotationValue": "published",
+                        "comments": [],
+                        "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                        "termSource": "EFO"
+                    },
+                    "title": ""
+                },
+                {
+                    "authorList": "Mueller M, Langer L L",
+                    "comments": [
+                        {
+                            "name": "omero_annotation_namespace",
+                            "value": "ISA:STUDY:STUDY PUBLICATIONS"
+                        }
+                    ],
+                    "doi": "10.1038/s41467-022-34205-9",
+                    "pubMedID": "678978",
+                    "status": {
+                        "@id": "#ontology_annotation/bf23c847-6c08-447a-9f03-934d6d02af0b",
+                        "annotationValue": "published",
+                        "comments": [],
+                        "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                        "termSource": "EFO"
+                    },
+                    "title": ""
+                }
+            ],
+            "studyDesignDescriptors": [
+                {
+                    "@id": "#ontology_annotation/784bd9fe-5637-42e2-877a-e6d52d3f8f3f",
+                    "annotationValue": "Transmission Electron Microscopy",
+                    "comments": [],
+                    "termAccession": "http://www.ebi.ac.uk/efo/EFO_0001796",
+                    "termSource": "EFO"
+                }
+            ],
+            "submissionDate": "8/11/2022",
+            "title": "My Custom Study Title",
+            "unitCategories": []
+        }
+    ],
+    "submissionDate": "8/11/2022",
+    "title": "Mitochondria in HeLa Cells"
+}

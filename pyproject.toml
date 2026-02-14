@@ -26,5 +26,8 @@ dependencies = [
 [project.entry-points."omero_cli_transfer.pack.plugin"]
 isa = "omero_isa:pack_isa"
 
+[project.scripts]
+omero-isa = "omero_isa.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/cmohl2013/omero-isa"
