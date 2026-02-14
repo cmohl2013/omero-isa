@@ -34,7 +34,7 @@ jobs:
             python-version: "3.8"
       - name: Build omero_isa
         run: |
-          $$CONDA/bin/conda create -y -n omero_env python=3.8 -c conda-forge
+          $CONDA/bin/conda create -y -n omero_env python=3.8 -c conda-forge
           source $CONDA/bin/activate omero_env
           conda install -y -c conda-forge zeroc-ice=3.6.5
           python -m pip install . --ignore-installed
