@@ -4,7 +4,6 @@ import tarfile
 from pathlib import Path
 
 import pytest
-from generate_xml import list_file_ids
 from ome_types import from_xml
 from omero.cli import CLI
 from omero.gateway import BlitzGateway
@@ -12,11 +11,51 @@ from omero.model import MapAnnotationI, NamedValue
 from omero.plugins.sessions import SessionsControl
 from omero.rtypes import rstring, rint
 from omero.model import RoiI, PolygonI
-
-
+from ome_types.model import FileAnnotation, Annotation, AnnotationRef, XMLAnnotation
+from ome_types import to_xml
 from omero.testlib import ITest
 from omero_cli_transfer import TransferControl
 
+from typing import List, Union
+
+import xml.etree.cElementTree as ETree
+
+def get_server_path(anrefs: List[AnnotationRef],
+                    ans: List[Annotation]) -> Union[str, None]:
+    fpath = None
+    xml_ids = []
+    for an in anrefs:
+        for an_loop in ans:
+            if an.id == an_loop.id:
+                if isinstance(an_loop, XMLAnnotation):
+                    xml_ids.append(an_loop.id)
+                else:
+                    continue
+    for an_loop in ans:
+        if an_loop.id in xml_ids:
+            if not fpath:
+                tree = ETree.fromstring(to_xml(an_loop.value,
+                                               canonicalize=True))
+                for el in tree:
+                    if el.tag.rpartition('}')[2] == "CLITransferServerPath":
+                        for el2 in el:
+                            if el2.tag.rpartition('}')[2] == "Path":
+                                fpath = el2.text
+    return fpath
+
+
+def list_file_ids(ome) -> dict:
+    id_list = {}
+    for img in ome.images:
+        path = get_server_path(img.annotation_refs, ome.structured_annotations)
+        id_list[img.id] = path
+    for ann in ome.structured_annotations:
+        if isinstance(ann, FileAnnotation):
+            if ann.namespace != "omero.web.figure.json":
+                path = get_server_path(ann.annotation_refs,
+                                       ome.structured_annotations)
+            id_list[ann.id] = path
+    return id_list
 
 
 class AbstractCLITest(ITest):

@@ -160,7 +160,7 @@ conda activate omero-isa
 # Clone and install
 git clone https://github.com/cmohl2013/omero-isa.git
 cd omero-isa
-pip install -e .[dev]
+pip install -e .
 conda install pytest
 ```
 
@@ -182,13 +182,8 @@ sudo .omero/compose up --build
 ```bash
 # All tests
 OMERODIR="." ICE_CONFIG="test/ice.config" pytest -v
-
-# Specific test file
-OMERODIR="." ICE_CONFIG="test/ice.config" pytest test/test_cli.py -v
-
-# With coverage report
-OMERODIR="." ICE_CONFIG="test/ice.config" pytest --cov=src/omero_isa test/
 ```
+
 
 ### Test Database Access
 
