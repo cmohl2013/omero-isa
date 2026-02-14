@@ -37,6 +37,7 @@ jobs:
           $CONDA/bin/conda create -y -n omero_env python=3.8 -c conda-forge
           source $CONDA/bin/activate omero_env
           conda install -y -c conda-forge zeroc-ice=3.6.5
+          conda install -c conda-forge libiconv
           python -m pip install . --ignore-installed
       - name: Run tests
         run: |
